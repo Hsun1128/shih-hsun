@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates — Shih Hsun Wang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #000000;
+      --bg-secondary: #111111;
+      --bg-card: #1d1d1f;
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1a6;
+      --text-muted: #6e6e73;
+      --accent: #2997ff;
+      --border: rgba(255, 255, 255, 0.08);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    main {
+      padding: 7rem 2rem 4rem;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 720px;
+      margin-bottom: 2rem;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-secondary);
+      border-radius: 980px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font);
+    }
+
+    .chip:hover { border-color: rgba(255,255,255,0.15); color: var(--text-primary); }
+    .chip.active { border-color: rgba(41,151,255,0.5); color: var(--text-primary); background: rgba(41,151,255,0.10); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.15); }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: rgba(255,255,255,0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb-pdf {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: none;
+    }
+
+    .meta {
+      padding: 1rem 1rem 1.1rem;
+    }
+
+    .title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+
+    .sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-close svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--text-primary);
+      stroke-width: 2;
+    }
+
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox.active .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 12px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-pdf {
+      width: 80vw;
+      height: 80vh;
+      max-width: 900px;
+      border: none;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .lightbox-title {
+      margin-top: 1.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+    }
+
+    .lightbox-download {
+      margin-top: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 980px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .lightbox-download:hover {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .lightbox-download svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    @media (max-width: 980px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1rem; }
+      .lightbox-pdf { width: 95vw; height: 70vh; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">Shih Hsun Wang</a>
+      <ul class="nav-links">
+        <li><a href="index.html#certifications">Back to site</a></li>
+        <li><a href="src/CV_sm_en_20260326.pdf" target="_blank" rel="noopener">CV (EN)</a></li>
+        <li><a href="src/CV_sm_zh_20260326.pdf" target="_blank" rel="noopener">CV (ZH)</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <div class="label">Certificates</div>
+      <h1>All certificates.</h1>
+      <p class="desc">A curated wall of certifications, awards, and training records. Click any item to view in lightbox.</p>
+
+      <div class="toolbar" aria-label="Certificate filters">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="quality">Quality</button>
+        <button class="chip" data-filter="ai">AI</button>
+        <button class="chip" data-filter="volunteer">Volunteer</button>
+        <button class="chip" data-filter="competition">Competition</button>
+        <button class="chip" data-filter="language">Language</button>
+      </div>
+
+      <div class="grid" id="certGrid">
+        <!-- Quality / Manufacturing -->
+        <div class="card" data-tags="quality" data-src="src/imgs/certs/CQT.jpg" data-title="Certified Quality Technician (CQT)" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/CQT.jpg" alt="CQT certificate" loading="lazy"></div>
+          <div class="meta"><div class="title">Certified Quality Technician (CQT)</div><div class="sub">CQT.jpg</div></div>
+        </div>
+        <div class="card" data-tags="quality" data-src="src/imgs/certs/6_sigma.JPG" data-title="Six Sigma Green Belt" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/6_sigma.JPG" alt="Six Sigma certificate" loading="lazy"></div>
+          <div class="meta"><div class="title">Six Sigma Green Belt</div><div class="sub">6_sigma.JPG</div></div>
+        </div>
+        <div class="card" data-tags="quality" data-src="src/imgs/certs/FMEA失效模式與效應分析.jpg" data-title="FMEA — Failure Mode & Effects Analysis" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/FMEA失效模式與效應分析.jpg" alt="FMEA training" loading="lazy"></div>
+          <div class="meta"><div class="title">FMEA — Failure Mode &amp; Effects Analysis</div><div class="sub">FMEA失效模式與效應分析.jpg</div></div>
+        </div>
+
+        <!-- AI / DLI -->
+        <div class="card" data-tags="ai" data-src="src/imgs/certs/NVIDIA_DLI.png" data-title="NVIDIA DLI — Deep Learning Fundamentals" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/NVIDIA_DLI.png" alt="NVIDIA DLI certificate" loading="lazy"></div>
+          <div class="meta"><div class="title">NVIDIA DLI — Deep Learning Fundamentals</div><div class="sub">NVIDIA_DLI.png</div></div>
+        </div>
+        <div class="card" data-tags="ai" data-src="src/imgs/certs/NVIDIA_JetsonNano.png" data-title="NVIDIA DLI — Jetson Nano Edge AI" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/NVIDIA_JetsonNano.png" alt="NVIDIA Jetson Nano certificate" loading="lazy"></div>
+          <div class="meta"><div class="title">NVIDIA DLI — Jetson Nano Edge AI</div><div class="sub">NVIDIA_JetsonNano.png</div></div>
+        </div>
+        <div class="card" data-tags="ai" data-src="src/imgs/certs/AI深度學習於電腦視覺與時序建模應用.jpg" data-title="AI Deep Learning — CV & Time Series Modeling" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/AI深度學習於電腦視覺與時序建模應用.jpg" alt="Deep learning application certificate" loading="lazy"></div>
+          <div class="meta"><div class="title">AI Deep Learning — CV &amp; Time Series Modeling</div><div class="sub">AI深度學習於電腦視覺與時序建模應用.jpg</div></div>
+        </div>
+        <div class="card" data-tags="ai" data-src="src/imgs/certs/AOI.jpg" data-title="AOI / Visual Inspection" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/AOI.jpg" alt="AOI related certificate" loading="lazy"></div>
+          <div class="meta"><div class="title">AOI / Visual Inspection</div><div class="sub">AOI.jpg</div></div>
+        </div>
+
+        <!-- Competition / Awards -->
+        <div class="card" data-tags="competition ai" data-src="src/imgs/certs/AI CUP.png" data-title="AI CUP 2024 — RAG & LLM in Financial Q&A" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/AI CUP.png" alt="AI CUP certificate" loading="lazy"></div>
+          <div class="meta"><div class="title">AI CUP 2024 — RAG &amp; LLM in Financial Q&amp;A</div><div class="sub">AI CUP.png</div></div>
+        </div>
+        <div class="card" data-tags="competition" data-src="src/imgs/certs/FTC_Sydney.jpg" data-title="FTC Australia — Top 18 Worldwide" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/FTC_Sydney.jpg" alt="FTC Sydney photo" loading="lazy"></div>
+          <div class="meta"><div class="title">FTC Australia — Top 18 Worldwide</div><div class="sub">FTC_Sydney.jpg</div></div>
+        </div>
+
+        <!-- Volunteer -->
+        <div class="card" data-tags="volunteer" data-src="src/imgs/certs/NationalVolunteer_1.jpg" data-title="Volunteer Service Record" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/NationalVolunteer_1.jpg" alt="Volunteer certificate 1" loading="lazy"></div>
+          <div class="meta"><div class="title">Volunteer Service Record</div><div class="sub">NationalVolunteer_1.jpg</div></div>
+        </div>
+        <div class="card" data-tags="volunteer" data-src="src/imgs/certs/NationalVolunteer_2.jpg" data-title="Volunteer Service Record (2)" data-type="image">
+          <div class="thumb"><img src="src/imgs/certs/NationalVolunteer_2.jpg" alt="Volunteer certificate 2" loading="lazy"></div>
+          <div class="meta"><div class="title">Volunteer Service Record (2)</div><div class="sub">NationalVolunteer_2.jpg</div></div>
+        </div>
+
+        <!-- Language -->
+        <div class="card" data-tags="language" data-src="src/imgs/certs/EF SET Certificate.pdf" data-title="EF SET Certificate" data-type="pdf">
+          <div class="thumb">
+            <embed src="src/imgs/certs/EF SET Certificate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="thumb-pdf">
+          </div>
+          <div class="meta"><div class="title">EF SET Certificate</div><div class="sub">EF SET Certificate.pdf</div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Shih Hsun Wang. Certificates page.</p>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close lightbox">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="lightbox-content">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" style="display:none;">
+      <iframe class="lightbox-pdf" id="lightboxPdf" src="" style="display:none;"></iframe>
+      <div class="lightbox-title" id="lightboxTitle"></div>
+      <a class="lightbox-download" id="lightboxDownload" href="" download>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxPdf = document.getElementById('lightboxPdf');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDownload = document.getElementById('lightboxDownload');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    function setActive(el) {
+      chips.forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function applyFilter(tag) {
+      cards.forEach(card => {
+        const tags = (card.getAttribute('data-tags') || '').split(/\s+/).filter(Boolean);
+        const show = tag === 'all' || tags.includes(tag);
+        card.style.display = show ? '' : 'none';
+      });
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const filter = chip.getAttribute('data-filter');
+        setActive(chip);
+        applyFilter(filter);
+      });
+    });
+
+    function openLightbox(card) {
+      const src = card.getAttribute('data-src');
+      const title = card.getAttribute('data-title');
+      const type = card.getAttribute('data-type');
+
+      lightboxTitle.textContent = title;
+      lightboxDownload.href = src;
+
+      if (type === 'pdf') {
+        lightboxImg.style.display = 'none';
+        lightboxPdf.style.display = 'block';
+        lightboxPdf.src = src;
+      } else {
+        lightboxPdf.style.display = 'none';
+        lightboxImg.style.display = 'block';
+        lightboxImg.src = src;
+        lightboxImg.alt = title;
+      }
+
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        lightboxImg.src = '';
+        lightboxPdf.src = '';
+      }, 300);
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLightbox(card);
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
