@@ -79,3 +79,49 @@ if (lightbox) {
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 }
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightbox(); });
+
+// Visitor Counter logic
+const supabaseUrl = 'https://xywfuhbmukdwcxafjhyy.supabase.co';
+const supabaseKey = 'sb_publishable_oOcl0wsgGySjaR1c4LT9hw_4Ms_l_tp';
+const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+async function trackVisitor() {
+  try {
+    // A. Fingerprint
+    const fp = await FingerprintJS.load();
+    const result = await fp.get();
+    const visitorId = result.visitorId;
+    
+    // B. Date
+    const today = new Date().toISOString().split('T')[0];
+
+    // C. Write to site_logs (using fingerprint + visit_date as unique key or just checking)
+    const { error: insertError } = await _supabase
+      .from('site_logs')
+      .insert({ fingerprint: visitorId, visit_date: today });
+
+    if (insertError?.code === '23505') {
+      console.log('Welcome back! You have been counted today.');
+    } else if (insertError) {
+      console.error('Insert error:', insertError);
+    } else {
+      console.log('New visit tracked!');
+    }
+
+    // D. Fetch total count
+    const { count, error: countError } = await _supabase
+      .from('site_logs')
+      .select('*', { count: 'exact', head: true });
+
+    if (!countError) {
+      const countEl = document.getElementById('visit-count');
+      if (countEl) countEl.innerText = count;
+    } else {
+      console.error('Count error:', countError);
+    }
+  } catch (err) {
+    console.error('Visitor tracking failed:', err);
+  }
+}
+
+// document.addEventListener('DOMContentLoaded', trackVisitor); // Removed - handled by components.js after footer load

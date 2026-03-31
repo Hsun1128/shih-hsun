@@ -11,16 +11,7 @@
 
 </head>
 <body>
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-logo" href="index.html">Shih Hsun Wang</a>
-      <ul class="nav-links">
-        <li><a href="index.html#certifications">Back to site</a></li>
-        <li><a href="src/CV_sm_en_20260326.pdf" target="_blank" rel="noopener">CV (EN)</a></li>
-        <li><a href="src/CV_sm_zh_20260326.pdf" target="_blank" rel="noopener">CV (ZH)</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div id="header-placeholder" data-file="components/header-certs.html"></div>
 
   <main>
     <div class="wrap">
@@ -101,9 +92,7 @@
     </div>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Shih Hsun Wang. Certificates page.</p>
-  </footer>
+  <footer id="footer-placeholder"></footer>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
@@ -121,6 +110,11 @@
     </div>
   </div>
 
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@4/dist/fp.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/components.js"></script>
   <script src="js/certs_script.js"></script>
 </body>
 </html>
