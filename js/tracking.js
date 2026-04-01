@@ -1,5 +1,6 @@
 // Common tracking and behavior logging logic
 let visitorId = null;
+let visitorFingerprint = null;
 let sectionStartTime = null;
 let currentSection = null;
 let maxScroll = 0;
@@ -17,10 +18,21 @@ async function trackVisitor() {
   // Wait a bit for other things to settle
   await new Promise(resolve => setTimeout(resolve, 200));
   try {
-    // A. Fingerprint
+    // A. Fingerprint (client-generated)
     const fp = await FingerprintJS.load();
     const result = await fp.get();
-    visitorId = result.visitorId;
+    visitorFingerprint = result.visitorId;
+
+    // B. Resolve database visitor_id from RPC function
+    const { data: resolvedVisitorId, error: visitorFnError } = await _supabase.rpc('get_or_create_visitor', {
+      p_fingerprint: visitorFingerprint
+    });
+
+    if (visitorFnError) {
+      throw visitorFnError;
+    }
+
+    visitorId = resolvedVisitorId;
     window.visitorId = visitorId;
 
     // Start behavior tracking as early as possible after fingerprint is ready.
@@ -28,17 +40,17 @@ async function trackVisitor() {
       initBehaviorLogging();
     }
     
-    // B. Date
+    // C. Date
     const today = new Date().toISOString().split('T')[0];
     const referrer = document.referrer || 'Direct';
     const userAgent = navigator.userAgent;
     const screenSize = `${window.screen.width}x${window.screen.height}`;
 
-    // C. Write to site_logs
+    // D. Write to site_logs
     const { error: insertError } = await _supabase
       .from('site_logs')
       .insert({
-        fingerprint: visitorId, 
+        visitor_id: visitorId,
         visit_date: today, 
         referrer: referrer, 
         user_agent: userAgent, 
@@ -50,14 +62,24 @@ async function trackVisitor() {
       console.error('Insert error:', insertError);
     }
 
-    // D. Fetch total count
-    const { count, error: countError } = await _supabase
-      .from('site_logs')
-      .select('*', { count: 'exact', head: true });
+    // E. Fetch visitor stats from RPC function
+    const { data: statsData, error: statsError } = await _supabase.rpc('get_site_stats');
+    if (!statsError) {
+      const stats = Array.isArray(statsData) ? statsData[0] : statsData;
+      const totalVisitors = stats?.total_visitors ?? stats?.count ?? null;
+      const todayVisitors = stats?.today_visitors ?? null;
 
-    if (!countError) {
       const countEl = document.getElementById('visit-count');
-      if (countEl) countEl.innerText = count;
+      if (countEl && totalVisitors !== null) {
+        countEl.innerText = totalVisitors;
+      }
+
+      const todayCountEl = document.getElementById('visit-count-today');
+      if (todayCountEl && todayVisitors !== null) {
+        todayCountEl.innerText = todayVisitors;
+      }
+    } else {
+      console.error('Stats fetch error:', statsError);
     }
 
   } catch (err) {
@@ -89,7 +111,7 @@ function initBehaviorLogging() {
 
   function logStayTime(sectionName, seconds) {
     _supabase.from('behavior_logs').insert({
-      fingerprint: visitorId,
+      visitor_id: visitorId,
       event_type: 'stay_time',
       page_section: sectionName,
       details: { seconds }
@@ -159,7 +181,7 @@ function initBehaviorLogging() {
     const trackId = trackedEl.getAttribute('data-track-id');
 
     _supabase.from('behavior_logs').insert({
-      fingerprint: visitorId,
+      visitor_id: visitorId,
       event_type: 'click',
       page_section: sectionId,
       details: {
@@ -207,7 +229,7 @@ function initBehaviorLogging() {
 
     const finalScroll = getScrollPercent();
     sendBeacon({
-      fingerprint: visitorId,
+      visitor_id: visitorId,
       event_type: 'scroll_depth',
       page_section: pagePath,
       details: { percent: Math.max(maxScroll, finalScroll) }
@@ -217,7 +239,7 @@ function initBehaviorLogging() {
       const lastStay = Math.round((Date.now() - sectionStartTime) / 1000);
       if (lastStay > 1) {
         sendBeacon({
-          fingerprint: visitorId,
+          visitor_id: visitorId,
           event_type: 'stay_time',
           page_section: currentSection,
           details: { seconds: lastStay }
@@ -228,7 +250,7 @@ function initBehaviorLogging() {
     const pageStaySeconds = Math.round((Date.now() - pageLoadTime) / 1000);
     if (pageStaySeconds > 1) {
       sendBeacon({
-        fingerprint: visitorId,
+        visitor_id: visitorId,
         event_type: 'page_stay_time',
         page_section: pagePath,
         details: { seconds: pageStaySeconds }

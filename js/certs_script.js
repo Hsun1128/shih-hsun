@@ -102,7 +102,7 @@ function logCertificateClick(title, src) {
   if (window.visitorId && window._supabase) {
     const itemId = src ? src.split('/').pop().split('.')[0] : 'unknown';
     window._supabase.from('behavior_logs').insert({
-      fingerprint: window.visitorId,
+      visitor_id: window.visitorId,
       event_type: 'certificate_view',
       page_section: 'cert_grid',
       details: { item_id: itemId }
