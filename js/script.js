@@ -86,6 +86,7 @@ const supabaseKey = 'sb_publishable_oOcl0wsgGySjaR1c4LT9hw_4Ms_l_tp';
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 async function trackVisitor() {
+  await new Promise(resolve => setTimeout(resolve, 100));
   try {
     // A. Fingerprint
     const fp = await FingerprintJS.load();
@@ -94,11 +95,19 @@ async function trackVisitor() {
     
     // B. Date
     const today = new Date().toISOString().split('T')[0];
+    const referrer = document.referrer || 'Direct'; // source url
+    const userAgent = navigator.userAgent; // browser info
+    const screenSize = `${window.screen.width}x${window.screen.height}`; // screen size
 
     // C. Write to site_logs (using fingerprint + visit_date as unique key or just checking)
     const { error: insertError } = await _supabase
       .from('site_logs')
-      .insert({ fingerprint: visitorId, visit_date: today });
+      .insert({
+        fingerprint: visitorId, 
+        visit_date: today, 
+        referrer: referrer, 
+        user_agent: userAgent, 
+        screen_size: screenSize });
 
     if (insertError?.code === '23505') {
       console.log('Welcome back! You have been counted today.');
