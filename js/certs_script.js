@@ -21,6 +21,10 @@ function applyFilter(tag) {
 }
 
 chips.forEach(chip => {
+  const filter = chip.getAttribute('data-filter');
+  if (filter) {
+    chip.setAttribute('data-track-id', `cert_filter_${filter}`);
+  }
   chip.addEventListener('click', () => {
     const filter = chip.getAttribute('data-filter');
     setActive(chip);
@@ -54,6 +58,9 @@ function openLightbox(card) {
 
   lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';
+
+  // Log certificate view
+  logCertificateClick(title, src);
 }
 
 function closeLightbox() {
@@ -90,3 +97,15 @@ document.addEventListener('keydown', (e) => {
     closeLightbox();
   }
 });
+
+function logCertificateClick(title, src) {
+  if (window.visitorId && window._supabase) {
+    const itemId = src ? src.split('/').pop().split('.')[0] : 'unknown';
+    window._supabase.from('behavior_logs').insert({
+      fingerprint: window.visitorId,
+      event_type: 'certificate_view',
+      page_section: 'cert_grid',
+      details: { item_id: itemId }
+    }).then(({ error }) => { if (error) console.error('Cert view log error:', error); });
+  }
+}
