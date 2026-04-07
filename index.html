@@ -18,8 +18,8 @@
     <p class="hero-overline">AI &amp; Manufacturing Engineer</p>
     <h1>Shih Hsun <span class="gradient-text">Wang</span></h1>
     <p class="hero-subtitle">
-      Bridging IT and OT to bring AI-driven solutions to the manufacturing floor. 
-      Specializing in computer vision, data science, and smart manufacturing.
+      CS graduate passionate about AI and data science — building LLM applications, generative models, and intelligent systems.
+      Transitioning from manufacturing into a full-time AI/DS engineering role.
     </p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary" data-track-id="cta_get_in_touch">Get in Touch</a>
@@ -80,46 +80,49 @@
           </div>
           <h3>AI &amp; Machine Learning</h3>
           <div class="skill-tags">
-            <span class="skill-tag">YOLO</span>
             <span class="skill-tag">PyTorch</span>
-            <span class="skill-tag">TensorFlow</span>
-            <span class="skill-tag">Random Forest</span>
             <span class="skill-tag">CNN</span>
+            <span class="skill-tag">GRU / RNN</span>
+            <span class="skill-tag">Diffusion Models</span>
+            <span class="skill-tag">YOLO</span>
             <span class="skill-tag">Transfer Learning</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">LLM</span>
+            <span class="skill-tag">RAG</span>
+            <span class="skill-tag">Computer Vision</span>
             <span class="skill-tag">Signal Processing</span>
-            <span class="skill-tag">OpenCV</span>
           </div>
         </div>
         <div class="skill-card reveal">
           <div class="skill-icon green">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#30d158" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
           </div>
-          <h3>Software Engineering</h3>
+          <h3>Software &amp; Data Engineering</h3>
           <div class="skill-tags">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">LangChain</span>
             <span class="skill-tag">FastAPI</span>
             <span class="skill-tag">Docker</span>
             <span class="skill-tag">Linux</span>
+            <span class="skill-tag">FAISS</span>
             <span class="skill-tag">ETL / ELT</span>
-            <span class="skill-tag">RAG</span>
             <span class="skill-tag">Git</span>
+            <span class="skill-tag">SQL</span>
           </div>
         </div>
         <div class="skill-card reveal">
           <div class="skill-icon purple">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#bf5af2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           </div>
-          <h3>Manufacturing &amp; Quality</h3>
+          <h3>Domain Expertise</h3>
           <div class="skill-tags">
+            <span class="skill-tag">Smart Manufacturing</span>
+            <span class="skill-tag">IoT / IIoT</span>
             <span class="skill-tag">Six Sigma (GB)</span>
             <span class="skill-tag">SPC</span>
             <span class="skill-tag">FMEA</span>
-            <span class="skill-tag">8D Report</span>
             <span class="skill-tag">DOE</span>
-            <span class="skill-tag">QC 7 Tools</span>
             <span class="skill-tag">SolidWorks</span>
-            <span class="skill-tag">Creo (Pro/E)</span>
           </div>
         </div>
       </div>
@@ -252,9 +255,36 @@
         <div class="project-card reveal">
           <span class="project-badge ai">AI Competition</span>
           <h3>AI CUP 2024 — RAG &amp; LLM in Financial Q&amp;A</h3>
-          <p>Developed hybrid search (Vector Search + BM25) with custom embedding model, reranking strategies, and structured output for E.SUN AI open challenge.</p>
+          <p>Built a hybrid retrieval pipeline (BM25 + FAISS vector search) with custom Word2Vec training, OCR preprocessing, LangChain orchestration, multi-dimensional reranking, and Dockerized deployment for E.SUN's open financial Q&amp;A challenge.</p>
           <div class="project-tech">
-            <span>RAG</span><span>LangChain</span><span>BM25</span><span>Embedding</span><span>Reranking</span>
+            <span>RAG</span><span>LangChain</span><span>BM25</span><span>FAISS</span><span>Word2Vec</span><span>OCR</span><span>Docker</span><span>Reranking</span>
+          </div>
+          <div style="margin-top: 0.75rem;">
+            <a href="https://github.com/Hsun1128/AICUP-2024" target="_blank" rel="noopener" style="font-size: 0.8rem; color: var(--accent); text-decoration: none;">GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <span class="project-badge ai">Generative AI</span>
+          <h3>MNIST Diffusion Model (DDPM from Scratch)</h3>
+          <p>Implemented Denoising Diffusion Probabilistic Model (DDPM) with a custom lightweight U-Net featuring sinusoidal timestep embeddings and FiLM conditioning. Achieved FID ≈ 7.85 on MNIST generation. Fully containerized with Docker.</p>
+          <div class="project-tech">
+            <span>DDPM</span><span>U-Net</span><span>PyTorch</span><span>Generative AI</span><span>FiLM</span><span>Docker</span>
+          </div>
+          <div style="margin-top: 0.75rem;">
+            <a href="https://github.com/Hsun1128/NMIST-Diffusion-Model" target="_blank" rel="noopener" style="font-size: 0.8rem; color: var(--accent); text-decoration: none;">GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <span class="project-badge competition">Research</span>
+          <h3>Brain-to-Text Neural Decoding — Architecture Experiment</h3>
+          <p>Modified a Kaggle competition baseline (NEJM 2024 brain-to-text challenge) by replacing the LSTM decoder with a GRU architecture — including orthogonal weight init for hidden-hidden weights and learnable initial hidden states — and adding self-attention masking for variable-length EEG sequences (512-ch, 20ms bins).</p>
+          <div class="project-tech">
+            <span>GRU</span><span>Self-Attention</span><span>EEG</span><span>PyTorch</span><span>Neural Decoding</span><span>RNN</span>
+          </div>
+          <div style="margin-top: 0.75rem;">
+            <a href="https://github.com/Hsun1128/nejm-brain-to-text" target="_blank" rel="noopener" style="font-size: 0.8rem; color: var(--accent); text-decoration: none;">GitHub →</a>
           </div>
         </div>
 
@@ -379,7 +409,7 @@
       <div class="reveal">
         <p class="section-label">Contact</p>
         <h2 class="section-title">Let's build<br>something great.</h2>
-        <p class="section-desc">Interested in AI engineering for manufacturing, or smart production line solutions? Let's talk.</p>
+        <p class="section-desc">Open to AI Engineer, Data Scientist, and ML Engineer roles. Whether you're building intelligent systems, LLM applications, or data pipelines — let's talk.</p>
       </div>
       <div class="contact-links reveal">
         <a href="mailto:mic055179hael@gmail.com" class="contact-link" data-track-id="contact_email">
