@@ -1,4 +1,4 @@
-// Common tracking and behavior logging logic
+// Visitor tracking and behavior logging
 let visitorId = null;
 let visitorFingerprint = null;
 let sectionStartTime = null;
@@ -7,23 +7,13 @@ let maxScroll = 0;
 let behaviorLoggingInited = false;
 window.__trackingPageLoadTime = window.__trackingPageLoadTime || Date.now();
 
-const supabaseUrl = 'https://xywfuhbmukdwcxafjhyy.supabase.co';
-const supabaseKey = 'sb_publishable_oOcl0wsgGySjaR1c4LT9hw_4Ms_l_tp';
-const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-// Expose globally
-window._supabase = _supabase;
-
 async function trackVisitor() {
-  // Wait a bit for other things to settle
   await new Promise(resolve => setTimeout(resolve, 200));
   try {
-    // A. Fingerprint (client-generated)
     const fp = await FingerprintJS.load();
     const result = await fp.get();
     visitorFingerprint = result.visitorId;
 
-    // B. Resolve database visitor_id from RPC function
     const { data: resolvedVisitorId, error: visitorFnError } = await _supabase.rpc('get_or_create_visitor', {
       p_fingerprint: visitorFingerprint
     });
@@ -35,25 +25,22 @@ async function trackVisitor() {
     visitorId = resolvedVisitorId;
     window.visitorId = visitorId;
 
-    // Start behavior tracking as early as possible after fingerprint is ready.
     if (!behaviorLoggingInited) {
       initBehaviorLogging();
     }
-    
-    // C. Date
+
     const today = new Date().toISOString().split('T')[0];
     const referrer = document.referrer || 'Direct';
     const userAgent = navigator.userAgent;
     const screenSize = `${window.screen.width}x${window.screen.height}`;
 
-    // D. Write to site_logs
     const { error: insertError } = await _supabase
       .from('site_logs')
       .insert({
         visitor_id: visitorId,
-        visit_date: today, 
-        referrer: referrer, 
-        user_agent: userAgent, 
+        visit_date: today,
+        referrer: referrer,
+        user_agent: userAgent,
         screen_size: screenSize });
 
     if (insertError?.code === '23505') {
@@ -62,7 +49,6 @@ async function trackVisitor() {
       console.error('Insert error:', insertError);
     }
 
-    // E. Fetch visitor stats from RPC function
     const { data: statsData, error: statsError } = await _supabase.rpc('get_site_stats');
     if (!statsError) {
       const stats = Array.isArray(statsData) ? statsData[0] : statsData;
@@ -157,7 +143,6 @@ function initBehaviorLogging() {
     return bestSection;
   }
 
-  // 1. Section-level stay time (pages with <section> elements)
   const sections = document.querySelectorAll('section');
   if (sections.length > 0) {
     currentSection = detectSectionByViewportCenter(Array.from(sections)) || sections[0]?.id || pagePath;
@@ -170,7 +155,6 @@ function initBehaviorLogging() {
     sections.forEach(section => behaviorObserver.observe(section));
   }
 
-  // 2. Click tracking
   document.addEventListener('click', (e) => {
     if (!visitorId) return;
     const { target } = e;
@@ -191,7 +175,6 @@ function initBehaviorLogging() {
     }).then(({ error }) => { if (error) console.error('Click log error:', error); });
   });
 
-  // 3. Scroll depth: only track actual user scrolling
   window.addEventListener('scroll', () => {
     const scrollPercent = getScrollPercent();
     if (scrollPercent > maxScroll) maxScroll = scrollPercent;
@@ -205,7 +188,6 @@ function initBehaviorLogging() {
     }
   });
 
-  // 4. Page leave — all leave-time metrics collected here
   function sendBeacon(data) {
     const endpoint = `${supabaseUrl}/rest/v1/behavior_logs`;
     const payload = JSON.stringify(data);

@@ -15,7 +15,7 @@ This repository contains the source code for my personal portfolio website, show
 ## 📂 Project Structure
 - `/css` & `/js`: Core styling and interactivity.
 - `/components`: Modular HTML components (header/footer).
-- `/src`: Assets including CVs and project images.
+- `/assets`: Assets including CVs and project images.
 
 ## 📫 Contact
 - **Email:** mic055179hael@gmail.com

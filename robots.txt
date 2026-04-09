@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hsun1128.github.io/shih-hsun/sitemap.xml
