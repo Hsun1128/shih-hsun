@@ -299,13 +299,25 @@ async function initDashboard() {
       window._supabase.rpc('get_scroll_depth_distribution'),
     ]);
 
-    // KPI cards
+    // KPI cards + footer visitor stats
     if (overview && overview.length) {
       const o = overview[0];
       setKpi('kpi-total-visits', o.total_visits);
       setKpi('kpi-today',        o.today_visits);
       setKpi('kpi-unique',       o.unique_visitors);
       setKpi('kpi-scroll',       o.avg_scroll_depth != null ? `${o.avg_scroll_depth}%` : '—');
+
+      // Populate footer counts (tracking.js not loaded on dashboard)
+      const populateFooter = () => {
+        const countEl = document.getElementById('visit-count');
+        const todayEl = document.getElementById('visit-count-today');
+        if (countEl) countEl.textContent = o.unique_visitors;
+        if (todayEl) todayEl.textContent = o.today_visits;
+      };
+      populateFooter();
+      // Also run after footer loads (race condition safety)
+      document.getElementById('footer-placeholder')
+        ?.addEventListener('componentLoaded', populateFooter);
     }
 
     if (daily      && daily.length)      renderDailyVisits(daily);
