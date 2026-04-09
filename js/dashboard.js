@@ -376,13 +376,13 @@ async function initDashboard() {
     initTrendControls();
 
     const [
-      { data: overview,   error: e1 },
-      { data: daily,      error: e2 },
-      { data: devices,    error: e3 },
-      { data: sections,   error: e4 },
-      { data: ctas,       error: e5 },
-      { data: referrers,  error: e6 },
-      { data: scrollDist, error: e7 },
+      { data: overview },
+      { data: daily },
+      { data: devices },
+      { data: sections },
+      { data: ctas },
+      { data: referrers },
+      { data: scrollDist },
     ] = await Promise.all([
       window._supabase.rpc('get_dashboard_overview'),
       window._supabase.rpc('get_daily_visits', { days: currentDays }),
