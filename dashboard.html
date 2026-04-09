@@ -56,8 +56,18 @@
       <div class="dash-row-2">
         <div class="dash-chart-card">
           <div class="chart-card-header">
-            <h3>Daily Visits</h3>
-            <span class="chart-subtitle">Last 14 days</span>
+            <h3>Visitor Trend</h3>
+            <div class="chart-controls">
+              <div class="toggle-group" id="view-toggle">
+                <button class="toggle-btn active" data-view="daily">Daily</button>
+                <button class="toggle-btn" data-view="cumulative">Cumulative</button>
+              </div>
+              <div class="range-group" id="range-toggle">
+                <button class="range-btn" data-days="7">7d</button>
+                <button class="range-btn active" data-days="14">14d</button>
+                <button class="range-btn" data-days="30">30d</button>
+              </div>
+            </div>
           </div>
           <div class="chart-container">
             <canvas id="chart-daily-visits"></canvas>

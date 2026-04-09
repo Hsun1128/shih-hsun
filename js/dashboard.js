@@ -46,11 +46,42 @@ function formatSeconds(s) {
   return `${n}s`;
 }
 
-function setKpi(id, value) {
+// Animated counter for numeric KPI values
+function animateCounter(el, target, suffix = '') {
+  const duration = 800;
+  const start = performance.now();
+  const isFloat = String(target).includes('.');
+  el.classList.remove('loading');
+  el.classList.add('animated');
+
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+    const current = isFloat
+      ? (ease * parseFloat(target)).toFixed(1)
+      : Math.round(ease * parseInt(target));
+    el.textContent = current + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function setKpi(id, value, animate = true) {
   const el = document.getElementById(id);
   if (!el) return;
-  el.classList.remove('loading');
-  el.textContent = value ?? '—';
+  if (!value || value === '—') {
+    el.classList.remove('loading');
+    el.textContent = '—';
+    return;
+  }
+  // Animate numeric values
+  const numMatch = String(value).match(/^([\d.]+)(.*)$/);
+  if (animate && numMatch) {
+    animateCounter(el, numMatch[1], numMatch[2]);
+  } else {
+    el.classList.remove('loading');
+    el.textContent = value;
+  }
 }
 
 function renderLegend(containerId, labels, colors) {
@@ -65,25 +96,51 @@ function renderLegend(containerId, labels, colors) {
 
 // ── Chart renderers ──────────────────────────────────────────────────────
 
-function renderDailyVisits(data) {
+// State for visitor trend chart
+let visitorChart = null;
+let allDailyData = [];
+let currentView  = 'daily';
+let currentDays  = 14;
+
+function buildTrendDataset(data, view) {
   const labels = data.map(r => {
     const d = new Date(r.visit_date);
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   });
-  const values = data.map(r => Number(r.visitors));
 
-  new Chart(document.getElementById('chart-daily-visits'), {
+  let values;
+  if (view === 'cumulative') {
+    let running = 0;
+    values = data.map(r => { running += Number(r.visitors); return running; });
+  } else {
+    values = data.map(r => Number(r.visitors));
+  }
+  return { labels, values };
+}
+
+function renderDailyVisits(data) {
+  allDailyData = data;
+  const { labels, values } = buildTrendDataset(data, currentView);
+
+  const isCumulative = currentView === 'cumulative';
+  const color = isCumulative ? COLORS.green : COLORS.blue;
+  const bg    = isCumulative ? 'rgba(48,209,88,0.08)' : 'rgba(41,151,255,0.08)';
+
+  const canvas = document.getElementById('chart-daily-visits');
+  if (visitorChart) { visitorChart.destroy(); visitorChart = null; }
+
+  visitorChart = new Chart(canvas, {
     type: 'line',
     data: {
       labels,
       datasets: [{
-        label: 'Visitors',
+        label: isCumulative ? 'Total Visitors' : 'Daily Visitors',
         data: values,
-        borderColor: COLORS.blue,
-        backgroundColor: 'rgba(41,151,255,0.08)',
-        pointBackgroundColor: COLORS.blue,
+        borderColor: color,
+        backgroundColor: bg,
+        pointBackgroundColor: color,
         pointRadius: 4,
-        pointHoverRadius: 6,
+        pointHoverRadius: 7,
         fill: true,
         tension: 0.4,
       }],
@@ -91,12 +148,47 @@ function renderDailyVisits(data) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
+      animation: { duration: 500, easing: 'easeInOutQuart' },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: ctx => ctx[0].label,
+            label: ctx => ` ${ctx.parsed.y} ${isCumulative ? 'total' : 'visitors'}`,
+          },
+        },
+      },
       scales: {
         x: { grid: gridOpts(), ticks: { maxRotation: 0, maxTicksLimit: 7 } },
         y: { grid: gridOpts(), beginAtZero: true, ticks: { precision: 0 } },
       },
     },
+  });
+}
+
+async function updateTrendChart(days, view) {
+  currentDays = days;
+  currentView = view;
+  const { data } = await window._supabase.rpc('get_daily_visits', { days });
+  if (data) renderDailyVisits(data);
+}
+
+function initTrendControls() {
+  document.getElementById('view-toggle')?.addEventListener('click', e => {
+    const btn = e.target.closest('.toggle-btn');
+    if (!btn) return;
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentView = btn.dataset.view;
+    renderDailyVisits(allDailyData);
+  });
+
+  document.getElementById('range-toggle')?.addEventListener('click', e => {
+    const btn = e.target.closest('.range-btn');
+    if (!btn) return;
+    document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updateTrendChart(parseInt(btn.dataset.days), currentView);
   });
 }
 
@@ -281,6 +373,8 @@ async function initDashboard() {
   if (tsEl) tsEl.textContent = new Date().toLocaleTimeString();
 
   try {
+    initTrendControls();
+
     const [
       { data: overview,   error: e1 },
       { data: daily,      error: e2 },
@@ -291,7 +385,7 @@ async function initDashboard() {
       { data: scrollDist, error: e7 },
     ] = await Promise.all([
       window._supabase.rpc('get_dashboard_overview'),
-      window._supabase.rpc('get_daily_visits'),
+      window._supabase.rpc('get_daily_visits', { days: currentDays }),
       window._supabase.rpc('get_device_breakdown'),
       window._supabase.rpc('get_section_engagement'),
       window._supabase.rpc('get_cta_clicks'),

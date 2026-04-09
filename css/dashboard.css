@@ -114,9 +114,11 @@
 
 .chart-card-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  justify-content: space-between;
   gap: 0.75rem;
   margin-bottom: 1.25rem;
+  flex-wrap: wrap;
 }
 
 .chart-card-header h3 {
@@ -129,6 +131,53 @@
 .chart-subtitle {
   font-size: 0.75rem;
   color: var(--text-muted);
+}
+
+/* ===== CHART CONTROLS ===== */
+.chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toggle-group,
+.range-group {
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.toggle-btn,
+.range-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: var(--font);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.toggle-btn:hover,
+.range-btn:hover {
+  color: var(--text-secondary);
+}
+
+.toggle-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.range-btn.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
 }
 
 .chart-container {
@@ -214,6 +263,17 @@
 .cross-metric-table td:not(:first-child) {
   font-family: monospace;
   color: var(--text-primary);
+}
+
+/* ===== KPI COUNTER ANIMATION ===== */
+@keyframes kpi-pop {
+  0%   { transform: scale(0.85); opacity: 0; }
+  60%  { transform: scale(1.05); }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+.kpi-value.animated {
+  animation: kpi-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 /* ===== LOADING SKELETON ===== */
