@@ -26,7 +26,7 @@
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #f5f5f7 0%, #a1a1a6 100%);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -65,7 +65,7 @@
 
 .dash-kpi-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(41, 151, 255, 0.2);
+  border-color: color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .kpi-icon {
@@ -79,10 +79,10 @@
   margin-bottom: 0.75rem;
 }
 
-.kpi-icon.blue   { background: rgba(41, 151, 255, 0.15); }
-.kpi-icon.green  { background: rgba(48, 209, 88, 0.15); }
-.kpi-icon.purple { background: rgba(191, 90, 242, 0.15); }
-.kpi-icon.orange { background: rgba(255, 159, 10, 0.15); }
+.kpi-icon.blue   { background: color-mix(in srgb, var(--accent) 15%, transparent); }
+.kpi-icon.green  { background: color-mix(in srgb, var(--accent-green) 15%, transparent); }
+.kpi-icon.purple { background: color-mix(in srgb, var(--accent-purple) 15%, transparent); }
+.kpi-icon.orange { background: color-mix(in srgb, var(--accent-orange) 15%, transparent); }
 
 .kpi-value {
   font-size: 2.2rem;
@@ -109,7 +109,7 @@
 }
 
 .dash-chart-card:hover {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: color-mix(in srgb, white 12%, transparent);
 }
 
 .chart-card-header {
@@ -143,7 +143,7 @@
 .toggle-group,
 .range-group {
   display: flex;
-  background: rgba(255, 255, 255, 0.04);
+  background: color-mix(in srgb, white 4%, transparent);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 2px;
@@ -176,7 +176,7 @@
 }
 
 .range-btn.active {
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, white 10%, transparent);
   color: var(--text-primary);
 }
 
@@ -278,7 +278,7 @@
 
 /* ===== LOADING SKELETON ===== */
 .kpi-value.loading {
-  background: linear-gradient(90deg, var(--bg-card) 25%, rgba(255,255,255,0.06) 50%, var(--bg-card) 75%);
+  background: linear-gradient(90deg, var(--bg-card) 25%, color-mix(in srgb, white 6%, transparent) 50%, var(--bg-card) 75%);
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.5s infinite;
   border-radius: 6px;
