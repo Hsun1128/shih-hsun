@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics — Shih Hsun Wang</title>
+  <meta name="description" content="Site analytics dashboard for Shih Hsun Wang's portfolio — aggregated, privacy-preserving visitor insights.">
+  <meta property="og:title" content="Analytics — Shih Hsun Wang">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hsun1128.github.io/shih-hsun/dashboard.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/certs_style.css?v=20260409">
+  <link rel="stylesheet" href="css/dashboard.css?v=20260409">
+</head>
+<body>
+  <div id="header-placeholder" data-file="components/header-dashboard.html"></div>
+
+  <main id="dashboard-page">
+    <div class="dash-wrap">
+
+      <!-- Page header -->
+      <div class="dash-header">
+        <p class="section-label">Live Analytics</p>
+        <h1 class="dash-title">Site Performance</h1>
+        <p class="dash-subtitle">Aggregated, privacy-preserving analytics — no personal data is displayed.</p>
+        <div class="dash-updated">Last updated: <span id="dash-last-updated">—</span></div>
+      </div>
+
+      <!-- Row 1: KPI cards -->
+      <div class="dash-kpi-grid">
+        <div class="dash-kpi-card">
+          <div class="kpi-icon blue">👁</div>
+          <div class="kpi-value loading" id="kpi-total-visits">0</div>
+          <div class="kpi-label">Total Visits</div>
+        </div>
+        <div class="dash-kpi-card">
+          <div class="kpi-icon green">📅</div>
+          <div class="kpi-value loading" id="kpi-today">0</div>
+          <div class="kpi-label">Today's Visits</div>
+        </div>
+        <div class="dash-kpi-card">
+          <div class="kpi-icon purple">🙋</div>
+          <div class="kpi-value loading" id="kpi-unique">0</div>
+          <div class="kpi-label">Unique Visitors</div>
+        </div>
+        <div class="dash-kpi-card">
+          <div class="kpi-icon orange">📜</div>
+          <div class="kpi-value loading" id="kpi-scroll">0</div>
+          <div class="kpi-label">Avg Scroll Depth</div>
+        </div>
+      </div>
+
+      <!-- Row 2: Daily visits + Referrers -->
+      <div class="dash-row-2">
+        <div class="dash-chart-card">
+          <div class="chart-card-header">
+            <h3>Visitor Trend</h3>
+            <div class="chart-controls">
+              <div class="toggle-group" id="view-toggle">
+                <button class="toggle-btn active" data-view="daily">Daily</button>
+                <button class="toggle-btn" data-view="cumulative">Cumulative</button>
+              </div>
+              <div class="range-group" id="range-toggle">
+                <button class="range-btn" data-days="7">7d</button>
+                <button class="range-btn active" data-days="14">14d</button>
+                <button class="range-btn" data-days="30">30d</button>
+              </div>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart-daily-visits"></canvas>
+          </div>
+        </div>
+        <div class="dash-chart-card">
+          <div class="chart-card-header">
+            <h3>Traffic Sources</h3>
+            <span class="chart-subtitle">By referrer</span>
+          </div>
+          <div class="chart-container chart-container-doughnut">
+            <canvas id="chart-referrers"></canvas>
+          </div>
+          <div class="chart-legend" id="legend-referrers"></div>
+        </div>
+      </div>
+
+      <!-- Row 3: Device breakdown + Section engagement -->
+      <div class="dash-row-3">
+        <div class="dash-chart-card">
+          <div class="chart-card-header">
+            <h3>Device Breakdown</h3>
+            <span class="chart-subtitle">Visitors by device type</span>
+          </div>
+          <div class="chart-container chart-container-doughnut">
+            <canvas id="chart-devices"></canvas>
+          </div>
+          <div class="chart-legend" id="legend-devices"></div>
+          <div class="cross-metric-table" id="device-cross-metric"></div>
+        </div>
+        <div class="dash-chart-card">
+          <div class="chart-card-header">
+            <h3>Section Engagement</h3>
+            <span class="chart-subtitle">Average time on section (seconds)</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart-sections"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4: CTA clicks + Scroll depth -->
+      <div class="dash-row-4">
+        <div class="dash-chart-card">
+          <div class="chart-card-header">
+            <h3>Top CTA Clicks</h3>
+            <span class="chart-subtitle">Most clicked elements</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart-cta"></canvas>
+          </div>
+        </div>
+        <div class="dash-chart-card">
+          <div class="chart-card-header">
+            <h3>Scroll Depth Distribution</h3>
+            <span class="chart-subtitle">How far visitors scroll</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart-scroll-dist"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy notice -->
+      <div class="dash-privacy-note">
+        All metrics are aggregated. No fingerprints, IP addresses, or individual user sessions are displayed.
+        Data is collected via anonymous browser fingerprinting with an explicit site notice.
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="footer-placeholder"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/dashboard.js?v=20260409"></script>
+</body>
+</html>
