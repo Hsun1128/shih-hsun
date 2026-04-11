@@ -71,7 +71,8 @@ Push to `main`. GitHub Pages auto-deploys from there. No CI pipeline or build st
 
 ### Branch Strategy
 
-- Production branch: `main`
+- Production branch: `main` (GitHub Pages deploys from here)
+- Staging branch: `dev` (PRs merge here first for review, then merge `dev` → `main`)
 - Feature branches: `feat/description`, `fix/description`, `refactor/description`
 - Claude working branch convention: `claude/<task-slug>`
 
