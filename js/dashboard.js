@@ -69,7 +69,7 @@ function animateCounter(el, target, suffix = '') {
 function setKpi(id, value, animate = true) {
   const el = document.getElementById(id);
   if (!el) return;
-  if (!value || value === '—') {
+  if (value == null || value === '—') {
     el.classList.remove('loading');
     el.textContent = '—';
     return;
@@ -188,7 +188,7 @@ function initTrendControls() {
     if (!btn) return;
     document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    updateTrendChart(parseInt(btn.dataset.days), currentView);
+    updateTrendChart(parseInt(btn.dataset.days), currentView).catch(console.error);
   });
 }
 
@@ -269,7 +269,7 @@ function renderDevices(data) {
           ${data.map(r => `
             <tr>
               <td>${r.device_type}</td>
-              <td>${r.avg_scroll_depth}%</td>
+              <td>${r.avg_scroll_depth != null ? r.avg_scroll_depth + '%' : '—'}</td>
               <td>${formatSeconds(r.avg_page_stay_s)}</td>
             </tr>`).join('')}
         </tbody>
@@ -372,6 +372,20 @@ async function initDashboard() {
   const tsEl = document.getElementById('dash-last-updated');
   if (tsEl) tsEl.textContent = new Date().toLocaleTimeString();
 
+  // Populate footer counts using get_site_stats — same RPC tracking.js uses
+  // on other pages — so the numbers are consistent across the site.
+  // Listener registered before awaiting RPCs so componentLoaded is never missed.
+  let siteStats = null;
+  const populateFooter = () => {
+    if (!siteStats) return;
+    const countEl = document.getElementById('visit-count');
+    const todayEl = document.getElementById('visit-count-today');
+    if (countEl) countEl.textContent = siteStats.total_visitors ?? siteStats.count ?? '—';
+    if (todayEl) todayEl.textContent = siteStats.today_visitors ?? '—';
+  };
+  document.getElementById('footer-placeholder')
+    ?.addEventListener('componentLoaded', populateFooter);
+
   try {
     initTrendControls();
 
@@ -383,6 +397,7 @@ async function initDashboard() {
       { data: ctas },
       { data: referrers },
       { data: scrollDist },
+      { data: stats },
     ] = await Promise.all([
       window._supabase.rpc('get_dashboard_overview'),
       window._supabase.rpc('get_daily_visits', { days: currentDays }),
@@ -391,27 +406,22 @@ async function initDashboard() {
       window._supabase.rpc('get_cta_clicks'),
       window._supabase.rpc('get_referrer_sources'),
       window._supabase.rpc('get_scroll_depth_distribution'),
+      window._supabase.rpc('get_site_stats'),
     ]);
 
-    // KPI cards + footer visitor stats
+    // KPI cards
     if (overview && overview.length) {
       const o = overview[0];
       setKpi('kpi-total-visits', o.total_visits);
       setKpi('kpi-today',        o.today_visits);
       setKpi('kpi-unique',       o.unique_visitors);
       setKpi('kpi-scroll',       o.avg_scroll_depth != null ? `${o.avg_scroll_depth}%` : '—');
+    }
 
-      // Populate footer counts (tracking.js not loaded on dashboard)
-      const populateFooter = () => {
-        const countEl = document.getElementById('visit-count');
-        const todayEl = document.getElementById('visit-count-today');
-        if (countEl) countEl.textContent = o.unique_visitors;
-        if (todayEl) todayEl.textContent = o.today_visits;
-      };
+    // Footer visitor counts — uses get_site_stats for consistency with other pages
+    if (stats) {
+      siteStats = Array.isArray(stats) ? stats[0] : stats;
       populateFooter();
-      // Also run after footer loads (race condition safety)
-      document.getElementById('footer-placeholder')
-        ?.addEventListener('componentLoaded', populateFooter);
     }
 
     if (daily      && daily.length)      renderDailyVisits(daily);
@@ -438,3 +448,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(initDashboard, 100);
   }
 });
+
+// Mobile nav (script.js not loaded on dashboard.html)
+function toggleMobileNav() {
+  document.getElementById('mobileNav')?.classList.toggle('active');
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav')?.classList.remove('active');
+}
