@@ -205,12 +205,16 @@ footer p {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .skills-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .projects-grid { grid-template-columns: 1fr; }
   .edu-grid { grid-template-columns: 1fr; }
   .media-grid { grid-template-columns: 1fr; }
   .profile-wrap { grid-template-columns: 1fr; }
   .profile-img { width: 140px; height: 140px; }
+}
+
+@media (max-width: 600px) {
+  .skills-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {

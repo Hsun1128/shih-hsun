@@ -1,6 +1,7 @@
 /* ===== HERO ===== */
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,6 +75,8 @@
 
 .hero-cta {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   opacity: 0;
   transform: translateY(20px);

@@ -1,3 +1,13 @@
+// Mobile nav
+function toggleMobileNav() {
+  const mobileNav = document.getElementById('mobileNav');
+  if (mobileNav) mobileNav.classList.toggle('active');
+}
+function closeMobileNav() {
+  const mobileNav = document.getElementById('mobileNav');
+  if (mobileNav) mobileNav.classList.remove('active');
+}
+
 const chips = Array.from(document.querySelectorAll('.chip'));
 const cards = Array.from(document.querySelectorAll('.card'));
 const lightbox = document.getElementById('lightbox');
