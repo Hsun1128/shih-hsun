@@ -42,7 +42,7 @@ Personal portfolio website for **Shih Hsun (Michael) Wang**, an AI & Manufacturi
 │   ├── components.js       # Dynamic component loading (header/footer); fires componentLoaded event
 │   ├── tracking.js         # Visitor analytics (fingerprint, clicks, scroll, stay time)
 │   ├── script.js           # Scroll reveal, mobile nav, lightbox (index.html)
-│   ├── certs_script.js     # Certificate filtering and lightbox (certs.html)
+│   ├── certs_script.js     # Certificate filtering, lightbox, and mobile nav (certs.html)
 │   └── dashboard.js        # Analytics dashboard data fetching and Chart.js rendering
 │
 └── assets/
@@ -162,13 +162,16 @@ Charts use Chart.js 4 (CDN). The visitor trend chart is stateful (`visitorChart`
 | File | Purpose |
 |---|---|
 | `base.css` | CSS variables, box-sizing reset, `.reveal` animation |
-| `layout.css` | Navigation bar, `.section-inner` container |
+| `layout.css` | Navigation bar, section padding, footer layout — **responsive rules for nav/section only** |
 | `components.css` | `.btn` variants, lightbox overlay |
-| `sections.css` | All section-specific styles (hero, about, skills, etc.) |
+| `sections.css` | All section-specific styles (hero, about, skills, etc.) + **all responsive grid breakpoints** |
 | `certs_style.css` | Certificate gallery page; also base sheet for `dashboard.html` |
 | `dashboard.css` | Dashboard-only styles |
 
 Place new styles in the most specific file. Do not add page-specific styles to `base.css` or `layout.css`.
+
+> **Important — CSS cascade order in `style.css`:**
+> `@import` order is `base → layout → components → sections`. Because `sections.css` loads last, any responsive rule for an element **defined in `sections.css`** (grids, hero, about-stats, etc.) **must also live in `sections.css`** (at the bottom, inside a `@media` block). Writing such rules in `layout.css` will have no effect — the base rule in `sections.css` always wins the cascade.
 
 ### CSS Variables (Dark Theme Only)
 
@@ -237,6 +240,7 @@ Use semantic elements (`<section>`, `<nav>`, `<header>`, `<footer>`, `<main>`). 
 5. **`reveal` class for animations.** New content blocks intended to animate in on scroll need `.reveal` — don't add new `IntersectionObserver` instances.
 6. **`data-track-id` on new CTAs.** Any meaningful new button or link should have a `data-track-id` attribute.
 7. **Page-specific headers.** Each page has its own header component file — do not share them.
+8. **CSS cascade — responsive rules belong with their base rules.** `style.css` imports in order: `base → layout → components → sections`. Any `@media` breakpoint for a class defined in `sections.css` **must be placed at the bottom of `sections.css`**, not in `layout.css`. Rules in `layout.css` are silently overridden by the later-cascading `sections.css` base definitions.
 
 ---
 
