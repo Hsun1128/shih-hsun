@@ -67,6 +67,7 @@ nav {
 }
 
 .nav-links a:hover { color: var(--text-primary); }
+.nav-links a.nav-active { color: var(--text-primary); font-weight: 500; }
 
 .nav-hamburger {
   display: none;

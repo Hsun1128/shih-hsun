@@ -1,10 +1,12 @@
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html">Shih Hsun Wang</a>
+    <a class="nav-logo" href="index.html" data-track-id="nav_logo">Shih Hsun Wang</a>
     <ul class="nav-links">
-      <li><a href="index.html#certifications" data-track-id="cta_back_to_site">Back to site</a></li>
-      <li><a href="assets/CV_sm_en_20260326.pdf" target="_blank" rel="noopener">CV (EN)</a></li>
-      <li><a href="assets/CV_sm_zh_20260326.pdf" target="_blank" rel="noopener">CV (ZH)</a></li>
+      <li><a href="index.html" data-track-id="nav_portfolio">Portfolio</a></li>
+      <li><a href="certs.html" class="nav-active" data-track-id="nav_certs">Certs</a></li>
+      <li><a href="dashboard.html" data-track-id="nav_analytics">Analytics</a></li>
+      <li><a href="assets/CV_sm_en_20260326.pdf" target="_blank" rel="noopener" data-track-id="nav_cv_en">CV (EN)</a></li>
+      <li><a href="assets/CV_sm_zh_20260326.pdf" target="_blank" rel="noopener" data-track-id="nav_cv_zh">CV (ZH)</a></li>
     </ul>
     <button class="nav-hamburger" aria-label="Menu" onclick="toggleMobileNav()">
       <span></span><span></span><span></span>
@@ -13,7 +15,9 @@
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
-  <a href="index.html#certifications" data-track-id="cta_back_to_site" onclick="closeMobileNav()">Back to site</a>
-  <a href="assets/CV_sm_en_20260326.pdf" target="_blank" rel="noopener" onclick="closeMobileNav()">CV (EN)</a>
-  <a href="assets/CV_sm_zh_20260326.pdf" target="_blank" rel="noopener" onclick="closeMobileNav()">CV (ZH)</a>
+  <a href="index.html" data-track-id="nav_portfolio" onclick="closeMobileNav()">Portfolio</a>
+  <a href="certs.html" data-track-id="nav_certs" onclick="closeMobileNav()">Certs</a>
+  <a href="dashboard.html" data-track-id="nav_analytics" onclick="closeMobileNav()">Analytics</a>
+  <a href="assets/CV_sm_en_20260326.pdf" target="_blank" rel="noopener" data-track-id="nav_cv_en" onclick="closeMobileNav()">CV (EN)</a>
+  <a href="assets/CV_sm_zh_20260326.pdf" target="_blank" rel="noopener" data-track-id="nav_cv_zh" onclick="closeMobileNav()">CV (ZH)</a>
 </div>
