@@ -2,16 +2,21 @@
   <div class="nav-inner">
     <a class="nav-logo" href="index.html" data-track-id="nav_logo">Shih Hsun Wang</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#volunteer">Volunteer</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#certifications">Certs</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="dashboard.html" data-track-id="nav_analytics">Analytics</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+      <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#volunteer" data-i18n="nav.volunteer">Volunteer</a></li>
+      <li><a href="#education" data-i18n="nav.education">Education</a></li>
+      <li><a href="#certifications" data-i18n="nav.certs">Certs</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      <li><a href="dashboard.html" data-track-id="nav_analytics" data-i18n="nav.analytics">Analytics</a></li>
     </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang-btn="en" onclick="setLanguage('en')">EN</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang-btn="zh-tw" onclick="setLanguage('zh-tw')">中文</button>
+    </div>
     <button class="nav-hamburger" aria-label="Menu" onclick="toggleMobileNav()">
       <span></span><span></span><span></span>
     </button>
@@ -19,13 +24,18 @@
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
-  <a href="#about" onclick="closeMobileNav()">About</a>
-  <a href="#skills" onclick="closeMobileNav()">Skills</a>
-  <a href="#experience" onclick="closeMobileNav()">Experience</a>
-  <a href="#projects" onclick="closeMobileNav()">Projects</a>
-  <a href="#volunteer" onclick="closeMobileNav()">Volunteer</a>
-  <a href="#education" onclick="closeMobileNav()">Education</a>
-  <a href="#certifications" onclick="closeMobileNav()">Certifications</a>
-  <a href="#contact" onclick="closeMobileNav()">Contact</a>
-  <a href="dashboard.html" data-track-id="nav_analytics" onclick="closeMobileNav()">Analytics</a>
+  <a href="#about" data-i18n="nav.about" onclick="closeMobileNav()">About</a>
+  <a href="#skills" data-i18n="nav.skills" onclick="closeMobileNav()">Skills</a>
+  <a href="#experience" data-i18n="nav.experience" onclick="closeMobileNav()">Experience</a>
+  <a href="#projects" data-i18n="nav.projects" onclick="closeMobileNav()">Projects</a>
+  <a href="#volunteer" data-i18n="nav.volunteer" onclick="closeMobileNav()">Volunteer</a>
+  <a href="#education" data-i18n="nav.education" onclick="closeMobileNav()">Education</a>
+  <a href="#certifications" data-i18n="nav.certs" onclick="closeMobileNav()">Certifications</a>
+  <a href="#contact" data-i18n="nav.contact" onclick="closeMobileNav()">Contact</a>
+  <a href="dashboard.html" data-track-id="nav_analytics" data-i18n="nav.analytics" onclick="closeMobileNav()">Analytics</a>
+  <div class="mobile-lang-switcher">
+    <button class="lang-btn" data-lang-btn="en" onclick="setLanguage('en'); closeMobileNav()">EN</button>
+    <span class="lang-divider">|</span>
+    <button class="lang-btn" data-lang-btn="zh-tw" onclick="setLanguage('zh-tw'); closeMobileNav()">中文</button>
+  </div>
 </div>

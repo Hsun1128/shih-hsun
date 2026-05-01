@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "about": "關於",
+    "skills": "技能",
+    "experience": "經歷",
+    "projects": "專案",
+    "volunteer": "志工",
+    "education": "學歷",
+    "certs": "證照",
+    "contact": "聯絡",
+    "analytics": "數據分析"
+  },
+  "hero": {
+    "overline": "AI 與製造工程師",
+    "subtitle": "深耕 OT 領域的 AI 與資料科學工程師——打造真正能在工廠落地的智慧系統。當多數工程師選擇一邊時，我帶來兩者：軟體開發能力與真實製造現場經驗。",
+    "cta_contact": "聯絡我",
+    "cta_work": "查看我的作品",
+    "cta_cv_en": "下載履歷（英文）",
+    "cta_cv_zh": "下載履歷（中文）"
+  },
+  "about": {
+    "label": "關於我",
+    "title": "硬體遇上<br>智慧。",
+    "desc": "我是 Michael——一位跨領域工程師，學習背景橫跨機械工程與資訊工程。我將 AI 技術與資料科學實際應用於製造現場，致力於跨越硬體原理與軟體開發之間的鴻溝，解決複雜的生產線挑戰。",
+    "stat1": "年以上製造業工作經驗",
+    "stat2": "試點生產線人力降低",
+    "stat3": "新台幣年度節省成本（製程優化）",
+    "stat4": "新進員工培訓時間縮短（SOP 標準化）"
+  },
+  "skills": {
+    "label": "技能",
+    "title": "為交付而生。",
+    "desc": "全端 AI 工程工具箱——從資料管線到模型部署，從製造現場到雲端。",
+    "ai_title": "AI 與機器學習",
+    "se_title": "軟體與資料工程",
+    "domain_title": "領域專業"
+  },
+  "experience": {
+    "label": "工作經歷",
+    "title": "真實的影響力。",
+    "desc": "在台灣最大軸承製造商，透過 AI、資料科學與製程工程創造可量化的成果。",
+    "job1": {
+      "date": "2024 年 10 月 — 至今",
+      "role": "AOI + AI 視覺檢測主導",
+      "company": "東培工業 TPI — 製造與製程工程師",
+      "b1": "<span class=\"timeline-highlight\">全廠視覺檢測（AOI+AI）：</span>主導從硬體規格定義、模型參數調校（YOLO）到 SOP 標準化的完整導入流程，成功在兩條試點生產線減少 25% 人力。",
+      "b2": "<span class=\"timeline-highlight\">跨國專案管理（FAT）：</span>在杭州進行 3 次海外工廠驗收測試，驗證機械穩定性與 AI 模型整合效能。"
+    },
+    "job2": {
+      "date": "2025 年 6 月 — 2026 年 2 月",
+      "role": "製程優化與智慧製造",
+      "company": "東培工業 TPI — 製造與製程工程師",
+      "b1": "<span class=\"timeline-highlight\">製程優化 A/B 測試：</span>透過統計假設檢定驗證單機與多機清洗製程，移除冗餘清洗步驟，每年節省新台幣 220 萬元。",
+      "b2": "<span class=\"timeline-highlight\">IoT 與預測性維護：</span>主導清洗設備數位轉型，在 HMI 上實現資料視覺化，並規劃進階製程分析的 MES 儀表板。"
+    },
+    "job3": {
+      "date": "2024 年 10 月 — 2025 年 12 月",
+      "role": "AI 模型開發與內部工具",
+      "company": "東培工業 TPI — 製造與製程工程師",
+      "b1": "<span class=\"timeline-highlight\">軸承振動瑕疵分類器：</span>使用隨機森林、DEA、小波分析與 FFT 開發多特徵融合時序 AI 模型，實現自動化品質檢測。",
+      "b2": "<span class=\"timeline-highlight\">企業 RAG 知識庫（PoC）：</span>以 Python、LangChain 及 FastAPI 從零建構內部 AI 助理，引入中文優化的 Embedding 模型進行本地語言處理。"
+    },
+    "job4": {
+      "date": "2022 年 1 月 — 2022 年 6 月",
+      "role": "SOP 標準化與培訓",
+      "company": "東培工業 TPI — 製造與製程工程師",
+      "b1": "<span class=\"timeline-highlight\">SOP 標準化：</span>首創全廠圖形化 SOP 操作手冊，將新進員工培訓時間縮短 67%（3 個月 → 1 個月）。"
+    }
+  },
+  "projects": {
+    "label": "專案與獎項",
+    "title": "工作以外的探索。",
+    "desc": "競賽、研究與個人專案——持續突破邊界。",
+    "p1": {
+      "badge": "AI 競賽",
+      "title": "AI CUP 2024 — RAG 與 LLM 金融問答",
+      "desc": "針對玉山銀行開放金融問答挑戰，建構混合式檢索管線（BM25 + FAISS 向量搜尋），包含自定義 Word2Vec 訓練、OCR 預處理、LangChain 編排、多維度重排序與 Docker 部署。"
+    },
+    "p2": {
+      "badge": "生成式 AI",
+      "title": "MNIST 擴散模型（從零實作 DDPM）",
+      "desc": "實作去噪擴散機率模型（DDPM），搭配具備正弦時間步嵌入與 FiLM 調制的輕量 U-Net。在 MNIST 生成任務上達到 FID ≈ 7.85，完整以 Docker 容器化。"
+    },
+    "p3": {
+      "badge": "研究",
+      "title": "腦波文字解碼——架構實驗",
+      "desc": "修改 Kaggle 競賽 baseline（NEJM 2024 腦波文字挑戰），以 GRU 架構取代 LSTM 解碼器——包含隱藏層正交初始化與可學習初始隱藏狀態——並針對可變長度 EEG 序列（512 通道、20ms bins）加入自注意力遮罩。"
+    },
+    "p4": {
+      "badge": "電腦視覺",
+      "title": "CDAF 自動對焦演算法——對焦指標研究",
+      "desc": "實作並比較三種對比度自動對焦指標（標準差、Sobel、Laplacian 變異數），搭配多焦點影像的 ROI 評分——與工業機器視覺相機中 AOI 系統所用的原理相同。"
+    },
+    "p5": {
+      "badge": "研究",
+      "title": "光度立體 + YOLO 表面缺陷檢測",
+      "desc": "碩士論文：優化影像識別演算法，突破特定缺陷類別的偵測瓶頸，提升軸承表面模型覆蓋率。"
+    },
+    "p6": {
+      "badge": "邊緣 AI",
+      "title": "NVIDIA Jetson Nano — 手勢分類",
+      "desc": "在 Jetson Nano 上使用 ResNet-18 建構即時手勢分類系統，應用於邊緣運算場景，包含免持控制與無障礙工具。"
+    },
+    "p7": {
+      "badge": "機器人",
+      "title": "FTC 澳洲賽 — 全球前 18 名",
+      "desc": "主導國際機器人競賽的機械設計，負責從概念到傳統加工、CAD 建模與 3D 列印的完整產品生命週期。"
+    },
+    "p8": {
+      "badge": "IoT",
+      "title": "IoT 智慧家居——學士論文（第一名）",
+      "desc": "整合 Raspberry Pi 與 Node-RED 進行硬體軟體介接，實現伺服馬達門禁控制、即時影像串流與自動化照明及遠端儀表板。"
+    },
+    "p9": {
+      "badge": "獎項",
+      "title": "元智大學 — Maker 競賽",
+      "desc": "在 2020 年全校 Maker 競賽智慧生活組獲得特優獎。"
+    }
+  },
+  "volunteer": {
+    "label": "志工服務",
+    "title": "承諾付諸行動。",
+    "desc": "兩次國際志工服務，在陌生環境中強化了規劃、溝通與主動承擔的能力。",
+    "photo_caption": "志工服務經歷——社區計畫支援與跨文化交流。",
+    "v1": {
+      "date": "2016 年 8 月 — 2016 年 9 月",
+      "role": "國際志工服務（兩次）",
+      "company": "社區計畫與跨文化交流",
+      "b1": "利用暑假主動參與<span class=\"timeline-highlight\">兩次國際志工服務</span>。",
+      "b2": "協調在地活動、支援團隊執行，並在多元參與者間傳遞故事與訊息——培養在模糊情境與快速變化限制下的從容應對能力。",
+      "b3": "強化了<span class=\"timeline-highlight\">同理心、承諾與務實解決問題</span>的行事風格——與跨部門工廠導入所需的特質相同。"
+    }
+  },
+  "education": {
+    "label": "學歷",
+    "title": "從齒輪到 GPU。",
+    "desc": "機械工程與電腦科學的雙重基礎。",
+    "e1": {
+      "degree": "碩士學位",
+      "field": "資訊工程學系",
+      "school": "元智大學",
+      "date": "2024 年 9 月 — 2026 年 1 月",
+      "thesis": "<strong>論文：</strong>基於光度立體結合 YOLO 的軸承表面缺陷檢測——優化影像識別演算法以突破特定缺陷類別的偵測瓶頸。"
+    },
+    "e2": {
+      "degree": "學士學位",
+      "field": "機械工程學系",
+      "school": "元智大學",
+      "date": "2017 年 9 月 — 2021 年 6 月",
+      "thesis": "<strong>論文：</strong>IoT 智慧家居——整合 Raspberry Pi 與 Node-RED 進行硬體軟體介接，實現伺服馬達門禁控制與即時影像串流。榮獲第一名。"
+    }
+  },
+  "certifications": {
+    "label": "證照",
+    "title": "專業能力驗證。",
+    "desc": "專業資格與實務認證。完整證照牆請見<a href=\"certs.html\" style=\"color: var(--accent); text-decoration: none;\" data-track-id=\"link_all_certificates_inline\">所有證照</a>。",
+    "c1_title": "品質技術師（CQT）",
+    "c1_desc": "專業品質認證",
+    "c2_title": "六標準差綠帶",
+    "c2_desc": "製程改善方法論",
+    "c3_title": "NVIDIA DLI — 深度學習基礎",
+    "c3_desc": "CNN、遷移學習、PyTorch/TensorFlow",
+    "c4_title": "NVIDIA DLI — Jetson Nano 邊緣 AI",
+    "c4_desc": "邊緣運算與 AI 應用",
+    "cta": "查看所有證照"
+  },
+  "contact": {
+    "label": "聯絡",
+    "title": "讓我們打造<br>真正能落地的東西。",
+    "desc": "開放 AI 工程師、資料科學家及機器學習工程師職缺——尤其是 IT 與 OT 交匯的領域。如果您正在建構工業 AI、智慧製造系統或資料驅動的生產工具，我能帶來工程實力與工廠現場經驗，讓願景成真。"
+  },
+  "footer": {
+    "copyright": "© 2026 王士勛。精心設計。",
+    "disclaimer": "本網站使用匿名追蹤以分析訪客互動與頁面效能，不收集任何可識別個人身份的資訊。",
+    "total_visitors": "總訪客數：",
+    "today_visitors": "今日訪客："
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "volunteer": "Volunteer",
+    "education": "Education",
+    "certs": "Certs",
+    "contact": "Contact",
+    "analytics": "Analytics"
+  },
+  "hero": {
+    "overline": "AI & Manufacturing Engineer",
+    "subtitle": "AI & data science engineer with deep OT roots — building intelligent systems that actually work on the factory floor. Where most engineers choose one side, I bring both: software fluency and real-world manufacturing context.",
+    "cta_contact": "Get in Touch",
+    "cta_work": "View My Work",
+    "cta_cv_en": "Download CV (EN)",
+    "cta_cv_zh": "Download CV (ZH)"
+  },
+  "about": {
+    "label": "About",
+    "title": "Where hardware<br>meets intelligence.",
+    "desc": "I'm Michael — an engineer with an interdisciplinary background spanning mechanical engineering and computer science. I practically apply AI technology and data science on manufacturing floors, with a passion for bridging the gap between hardware principles and software development to solve complex production line challenges.",
+    "stat1": "Years of industry experience in manufacturing",
+    "stat2": "Manpower reduction achieved on pilot production lines",
+    "stat3": "TWD annual cost savings through process optimization",
+    "stat4": "Reduction in new staff training time via SOP standardization"
+  },
+  "skills": {
+    "label": "Skills",
+    "title": "Built to ship.",
+    "desc": "A full-stack AI engineering toolkit — from data pipelines to model deployment, from the shop floor to the cloud.",
+    "ai_title": "AI & Machine Learning",
+    "se_title": "Software & Data Engineering",
+    "domain_title": "Domain Expertise"
+  },
+  "experience": {
+    "label": "Experience",
+    "title": "Real-world impact.",
+    "desc": "Delivering measurable results at Taiwan's largest bearing manufacturer through AI, data science, and process engineering.",
+    "job1": {
+      "date": "Oct 2024 — Present",
+      "role": "AOI + AI Visual Inspection Lead",
+      "company": "TPI Tung Pei Industrial — Manufacturing & Process Engineer",
+      "b1": "<span class=\"timeline-highlight\">Plant-wide visual inspection (AOI+AI):</span> Led implementation from hardware spec definition, model parameter tuning (YOLO), to SOP standardization. Successfully reduced manpower by 25% on two pilot production lines.",
+      "b2": "<span class=\"timeline-highlight\">Cross-border project management (FAT):</span> Conducted 3 overseas factory acceptance tests in Hangzhou to verify mechanical stability and AI model integration performance."
+    },
+    "job2": {
+      "date": "Jun 2025 — Feb 2026",
+      "role": "Process Optimization & Smart Manufacturing",
+      "company": "TPI Tung Pei Industrial — Manufacturing & Process Engineer",
+      "b1": "<span class=\"timeline-highlight\">A/B Testing for process optimization:</span> Validated single-machine vs multi-machine cleaning processes through statistical hypothesis testing. Removed redundant cleaning step, saving NT$2.2M annually.",
+      "b2": "<span class=\"timeline-highlight\">IoT &amp; predictive maintenance:</span> Led digital transformation of cleaning equipment, implemented data visualization on HMI, and planned MES dashboards for advanced process analysis."
+    },
+    "job3": {
+      "date": "Oct 2024 — Dec 2025",
+      "role": "AI Model Development & Internal Tools",
+      "company": "TPI Tung Pei Industrial — Manufacturing & Process Engineer",
+      "b1": "<span class=\"timeline-highlight\">Bearing vibration defect classifier:</span> Developed multi-feature fusion time-series AI models using Random Forest, DEA, Wavelet, and FFT for automated quality inspection.",
+      "b2": "<span class=\"timeline-highlight\">Corporate RAG knowledge base (PoC):</span> Built an internal AI assistant from scratch with Python, LangChain, and FastAPI. Introduced Chinese-optimized embedding model for local language processing."
+    },
+    "job4": {
+      "date": "Jan 2022 — Jun 2022",
+      "role": "SOP Standardization & Training",
+      "company": "TPI Tung Pei Industrial — Manufacturing & Process Engineer",
+      "b1": "<span class=\"timeline-highlight\">SOP standardization:</span> Pioneered plant-wide graphical SOP operation manuals, reducing new staff training time by 67% (3 months → 1 month)."
+    }
+  },
+  "projects": {
+    "label": "Projects & Awards",
+    "title": "Beyond the day job.",
+    "desc": "Competitions, research, and side projects that push the boundaries.",
+    "p1": {
+      "badge": "AI Competition",
+      "title": "AI CUP 2024 — RAG & LLM in Financial Q&A",
+      "desc": "Built a hybrid retrieval pipeline (BM25 + FAISS vector search) with custom Word2Vec training, OCR preprocessing, LangChain orchestration, multi-dimensional reranking, and Dockerized deployment for E.SUN's open financial Q&A challenge."
+    },
+    "p2": {
+      "badge": "Generative AI",
+      "title": "MNIST Diffusion Model (DDPM from Scratch)",
+      "desc": "Implemented Denoising Diffusion Probabilistic Model (DDPM) with a custom lightweight U-Net featuring sinusoidal timestep embeddings and FiLM conditioning. Achieved FID ≈ 7.85 on MNIST generation. Fully containerized with Docker."
+    },
+    "p3": {
+      "badge": "Research",
+      "title": "Brain-to-Text Neural Decoding — Architecture Experiment",
+      "desc": "Modified a Kaggle competition baseline (NEJM 2024 brain-to-text challenge) by replacing the LSTM decoder with a GRU architecture — including orthogonal weight init for hidden-hidden weights and learnable initial hidden states — and adding self-attention masking for variable-length EEG sequences (512-ch, 20ms bins)."
+    },
+    "p4": {
+      "badge": "Computer Vision",
+      "title": "CDAF Autofocus Algorithm — Focus Metric Study",
+      "desc": "Implemented and compared three contrast-based autofocus metrics (Std, Sobel, Laplacian variance) with ROI-based scoring on multi-focus images — the same principle behind industrial machine vision cameras used in AOI systems."
+    },
+    "p5": {
+      "badge": "Research",
+      "title": "Surface Defect Detection via Photometric Stereo + YOLO",
+      "desc": "Master's thesis optimizing image recognition algorithms to overcome detection bottlenecks for specific defect categories on bearing surfaces, improving model coverage."
+    },
+    "p6": {
+      "badge": "Edge AI",
+      "title": "NVIDIA Jetson Nano — Hand Gesture Classification",
+      "desc": "Built a real-time hand gesture classification system using ResNet-18 on the Jetson Nano for edge computing applications including hands-free control and accessibility tools."
+    },
+    "p7": {
+      "badge": "Robotics",
+      "title": "FTC Australia — Top 18 Worldwide",
+      "desc": "Led the mechanical design for an international robot competition. Responsible for the full product lifecycle from concept to conventional machining, CAD modeling, and 3D printing."
+    },
+    "p8": {
+      "badge": "IoT",
+      "title": "IoT Smart Home — Bachelor's Thesis (1st Place)",
+      "desc": "Integrated Raspberry Pi and Node-RED for hardware-software interfacing, implementing servo access control, real-time video streaming, and automated lighting with a remote dashboard."
+    },
+    "p9": {
+      "badge": "Award",
+      "title": "Yuan Ze University — Maker Competition",
+      "desc": "Outstanding Award in the Smart Living group at the 2020 university-wide Maker Competition."
+    }
+  },
+  "volunteer": {
+    "label": "Volunteer",
+    "title": "Commitment in action.",
+    "desc": "Two international volunteer services that strengthened planning, communication, and ownership in unfamiliar environments.",
+    "photo_caption": "Volunteer experience — community program support and cross-cultural collaboration.",
+    "v1": {
+      "date": "Aug 2016 — Sep 2016",
+      "role": "International Volunteer Service (x2)",
+      "company": "Community programs & cross-cultural collaboration",
+      "b1": "Took initiative to join <span class=\"timeline-highlight\">two international volunteer trips</span> during the summer break.",
+      "b2": "Coordinated local activities, supported team execution, and communicated stories and messages across diverse participants — building comfort with ambiguity and fast-changing constraints.",
+      "b3": "Reinforced an operating style of <span class=\"timeline-highlight\">empathy, commitment, and pragmatic problem-solving</span> — the same traits required for cross-functional factory rollouts."
+    }
+  },
+  "education": {
+    "label": "Education",
+    "title": "From gears to GPUs.",
+    "desc": "A dual foundation in mechanical engineering and computer science.",
+    "e1": {
+      "degree": "Master's Degree",
+      "field": "Computer Science & Information Engineering",
+      "school": "Yuan Ze University",
+      "date": "Sep 2024 — Jan 2026",
+      "thesis": "<strong>Thesis:</strong> Surface Defect Detection of Bearings Based on Photometric Stereo Combined with YOLO — optimizing image recognition to overcome detection bottlenecks for specific defect categories."
+    },
+    "e2": {
+      "degree": "Bachelor's Degree",
+      "field": "Mechanical Engineering",
+      "school": "Yuan Ze University",
+      "date": "Sep 2017 — Jun 2021",
+      "thesis": "<strong>Thesis:</strong> IoT Smart Home — integrated Raspberry Pi and Node-RED for hardware-software interfacing, implementing servo motor access control and real-time video streaming. Won 1st Place."
+    }
+  },
+  "certifications": {
+    "label": "Certifications",
+    "title": "Validated expertise.",
+    "desc": "Professional qualifications and practice certifications. For the full certificate wall, see <a href=\"certs.html\" style=\"color: var(--accent); text-decoration: none;\" data-track-id=\"link_all_certificates_inline\">all certificates</a>.",
+    "c1_title": "Certified Quality Technician (CQT)",
+    "c1_desc": "Professional quality certification",
+    "c2_title": "Six Sigma Green Belt",
+    "c2_desc": "Process improvement methodology",
+    "c3_title": "NVIDIA DLI — Deep Learning Fundamentals",
+    "c3_desc": "CNN, Transfer Learning, PyTorch/TensorFlow",
+    "c4_title": "NVIDIA DLI — Jetson Nano Edge AI",
+    "c4_desc": "Edge computing & AI applications",
+    "cta": "View all certificates"
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Let's build<br>something that ships.",
+    "desc": "Open to AI Engineer, Data Scientist, and ML Engineer roles — especially where IT meets OT. If you're building industrial AI, smart manufacturing systems, or data-driven production tools, I bring both the engineering chops and the factory-floor context to make it real."
+  },
+  "footer": {
+    "copyright": "© 2026 Shih Hsun Wang. Designed with precision.",
+    "disclaimer": "This site uses anonymous tracking to analyze visitor interactions and page performance. No personal identifiable information is collected.",
+    "total_visitors": "Total Visitors:",
+    "today_visitors": "Today's Visitors:"
+  }
+}

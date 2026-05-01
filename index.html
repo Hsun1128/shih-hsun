@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260416">
+  <link rel="stylesheet" href="css/style.css?v=20260501">
 </head>
 <body>
 
@@ -24,17 +24,17 @@
 
   <!-- HERO -->
   <section id="hero" class="hero">
-    <p class="hero-overline">AI &amp; Manufacturing Engineer</p>
+    <p class="hero-overline" data-i18n="hero.overline">AI &amp; Manufacturing Engineer</p>
     <h1>Shih Hsun <span class="gradient-text">Wang</span></h1>
-    <p class="hero-subtitle">
+    <p class="hero-subtitle" data-i18n="hero.subtitle">
       AI &amp; data science engineer with deep OT roots — building intelligent systems that actually work on the factory floor.
       Where most engineers choose one side, I bring both: software fluency and real-world manufacturing context.
     </p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary" data-track-id="cta_get_in_touch">Get in Touch</a>
-      <a href="#experience" class="btn btn-secondary" data-track-id="cta_view_work">View My Work</a>
-      <a href="assets/CV_sm_en_20260326.pdf" class="btn btn-secondary" target="_blank" rel="noopener" data-track-id="cta_download_cv_en">Download CV (EN)</a>
-      <a href="assets/CV_sm_zh_20260326.pdf" class="btn btn-secondary" target="_blank" rel="noopener" data-track-id="cta_download_cv_zh">Download CV (ZH)</a>
+      <a href="#contact" class="btn btn-primary" data-track-id="cta_get_in_touch" data-i18n="hero.cta_contact">Get in Touch</a>
+      <a href="#experience" class="btn btn-secondary" data-track-id="cta_view_work" data-i18n="hero.cta_work">View My Work</a>
+      <a href="assets/CV_sm_en_20260326.pdf" class="btn btn-secondary" target="_blank" rel="noopener" data-track-id="cta_download_cv_en" data-i18n="hero.cta_cv_en">Download CV (EN)</a>
+      <a href="assets/CV_sm_zh_20260326.pdf" class="btn btn-secondary" target="_blank" rel="noopener" data-track-id="cta_download_cv_zh" data-i18n="hero.cta_cv_zh">Download CV (ZH)</a>
     </div>
     <div class="hero-scroll"><span></span></div>
   </section>
@@ -44,9 +44,9 @@
     <div class="section-inner">
       <div class="about-grid">
         <div class="reveal">
-          <p class="section-label">About</p>
-          <h2 class="section-title">Where hardware<br>meets intelligence.</h2>
-          <p class="section-desc" style="margin-top: 1.5rem; margin-bottom:0; max-width: none;">
+          <p class="section-label" data-i18n="about.label">About</p>
+          <h2 class="section-title" data-i18n-html="about.title">Where hardware<br>meets intelligence.</h2>
+          <p class="section-desc" data-i18n="about.desc" style="margin-top: 1.5rem; margin-bottom:0; max-width: none;">
             I'm Michael — an engineer with an interdisciplinary background spanning mechanical engineering and computer science.
             I practically apply AI technology and data science on manufacturing floors, with a passion for bridging the gap between
             hardware principles and software development to solve complex production line challenges.
@@ -55,19 +55,19 @@
         <div class="about-stats reveal">
           <div class="stat-card">
             <div class="stat-number blue">4+</div>
-            <div class="stat-label">Years of industry experience in manufacturing</div>
+            <div class="stat-label" data-i18n="about.stat1">Years of industry experience in manufacturing</div>
           </div>
           <div class="stat-card">
             <div class="stat-number green">25%</div>
-            <div class="stat-label">Manpower reduction achieved on pilot production lines</div>
+            <div class="stat-label" data-i18n="about.stat2">Manpower reduction achieved on pilot production lines</div>
           </div>
           <div class="stat-card">
             <div class="stat-number purple">2.2M</div>
-            <div class="stat-label">TWD annual cost savings through process optimization</div>
+            <div class="stat-label" data-i18n="about.stat3">TWD annual cost savings through process optimization</div>
           </div>
           <div class="stat-card">
             <div class="stat-number orange">67%</div>
-            <div class="stat-label">Reduction in new staff training time via SOP standardization</div>
+            <div class="stat-label" data-i18n="about.stat4">Reduction in new staff training time via SOP standardization</div>
           </div>
         </div>
       </div>
@@ -78,16 +78,16 @@
   <section id="skills">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">Skills</p>
-        <h2 class="section-title">Built to ship.</h2>
-        <p class="section-desc">A full-stack AI engineering toolkit — from data pipelines to model deployment, from the shop floor to the cloud.</p>
+        <p class="section-label" data-i18n="skills.label">Skills</p>
+        <h2 class="section-title" data-i18n="skills.title">Built to ship.</h2>
+        <p class="section-desc" data-i18n="skills.desc">A full-stack AI engineering toolkit — from data pipelines to model deployment, from the shop floor to the cloud.</p>
       </div>
       <div class="skills-grid">
         <div class="skill-card reveal">
           <div class="skill-icon blue">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2997ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.57-3.25 3.92L12 22"/><path d="M12 2a4 4 0 0 0-4 4c0 1.95 1.4 3.57 3.25 3.92"/><path d="M8.5 8.5 3 11l9 4 9-4-5.5-2.5"/><path d="M3 11v5l9 4 9-4v-5"/></svg>
           </div>
-          <h3>AI &amp; Machine Learning</h3>
+          <h3 data-i18n="skills.ai_title">AI &amp; Machine Learning</h3>
           <div class="skill-tags">
             <span class="skill-tag">PyTorch</span>
             <span class="skill-tag">CNN</span>
@@ -106,7 +106,7 @@
           <div class="skill-icon green">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#30d158" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
           </div>
-          <h3>Software &amp; Data Engineering</h3>
+          <h3 data-i18n="skills.se_title">Software &amp; Data Engineering</h3>
           <div class="skill-tags">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">LangChain</span>
@@ -123,7 +123,7 @@
           <div class="skill-icon purple">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#bf5af2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           </div>
-          <h3>Domain Expertise</h3>
+          <h3 data-i18n="skills.domain_title">Domain Expertise</h3>
           <div class="skill-tags">
             <span class="skill-tag">Smart Manufacturing</span>
             <span class="skill-tag">IoT / IIoT</span>
@@ -145,24 +145,24 @@
   <section id="experience">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">Experience</p>
-        <h2 class="section-title">Real-world impact.</h2>
-        <p class="section-desc">Delivering measurable results at Taiwan's largest bearing manufacturer through AI, data science, and process engineering.</p>
+        <p class="section-label" data-i18n="experience.label">Experience</p>
+        <h2 class="section-title" data-i18n="experience.title">Real-world impact.</h2>
+        <p class="section-desc" data-i18n="experience.desc">Delivering measurable results at Taiwan's largest bearing manufacturer through AI, data science, and process engineering.</p>
       </div>
       <div class="timeline">
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">Oct 2024 — Present</div>
-          <div class="timeline-role">AOI + AI Visual Inspection Lead</div>
-          <div class="timeline-company">TPI Tung Pei Industrial — Manufacturing &amp; Process Engineer</div>
+          <div class="timeline-date" data-i18n="experience.job1.date">Oct 2024 — Present</div>
+          <div class="timeline-role" data-i18n="experience.job1.role">AOI + AI Visual Inspection Lead</div>
+          <div class="timeline-company" data-i18n="experience.job1.company">TPI Tung Pei Industrial — Manufacturing &amp; Process Engineer</div>
           <ul class="timeline-items-list">
-            <li>
-              <span class="timeline-highlight">Plant-wide visual inspection (AOI+AI):</span> 
-              Led implementation from hardware spec definition, model parameter tuning (YOLO), to SOP standardization. 
+            <li data-i18n-html="experience.job1.b1">
+              <span class="timeline-highlight">Plant-wide visual inspection (AOI+AI):</span>
+              Led implementation from hardware spec definition, model parameter tuning (YOLO), to SOP standardization.
               Successfully reduced manpower by 25% on two pilot production lines.
             </li>
-            <li>
-              <span class="timeline-highlight">Cross-border project management (FAT):</span> 
+            <li data-i18n-html="experience.job1.b2">
+              <span class="timeline-highlight">Cross-border project management (FAT):</span>
               Conducted 3 overseas factory acceptance tests in Hangzhou to verify mechanical stability and AI model integration performance.
             </li>
           </ul>
@@ -170,17 +170,17 @@
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">Jun 2025 — Feb 2026</div>
-          <div class="timeline-role">Process Optimization &amp; Smart Manufacturing</div>
-          <div class="timeline-company">TPI Tung Pei Industrial — Manufacturing &amp; Process Engineer</div>
+          <div class="timeline-date" data-i18n="experience.job2.date">Jun 2025 — Feb 2026</div>
+          <div class="timeline-role" data-i18n="experience.job2.role">Process Optimization &amp; Smart Manufacturing</div>
+          <div class="timeline-company" data-i18n="experience.job2.company">TPI Tung Pei Industrial — Manufacturing &amp; Process Engineer</div>
           <ul class="timeline-items-list">
-            <li>
-              <span class="timeline-highlight">A/B Testing for process optimization:</span> 
-              Validated single-machine vs multi-machine cleaning processes through statistical hypothesis testing. 
+            <li data-i18n-html="experience.job2.b1">
+              <span class="timeline-highlight">A/B Testing for process optimization:</span>
+              Validated single-machine vs multi-machine cleaning processes through statistical hypothesis testing.
               Removed redundant cleaning step, saving NT$2.2M annually.
             </li>
-            <li>
-              <span class="timeline-highlight">IoT &amp; predictive maintenance:</span> 
+            <li data-i18n-html="experience.job2.b2">
+              <span class="timeline-highlight">IoT &amp; predictive maintenance:</span>
               Led digital transformation of cleaning equipment, implemented data visualization on HMI, and planned MES dashboards for advanced process analysis.
             </li>
           </ul>
@@ -188,16 +188,16 @@
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">Oct 2024 — Dec 2025</div>
-          <div class="timeline-role">AI Model Development &amp; Internal Tools</div>
-          <div class="timeline-company">TPI Tung Pei Industrial — Manufacturing &amp; Process Engineer</div>
+          <div class="timeline-date" data-i18n="experience.job3.date">Oct 2024 — Dec 2025</div>
+          <div class="timeline-role" data-i18n="experience.job3.role">AI Model Development &amp; Internal Tools</div>
+          <div class="timeline-company" data-i18n="experience.job3.company">TPI Tung Pei Industrial — Manufacturing &amp; Process Engineer</div>
           <ul class="timeline-items-list">
-            <li>
-              <span class="timeline-highlight">Bearing vibration defect classifier:</span> 
+            <li data-i18n-html="experience.job3.b1">
+              <span class="timeline-highlight">Bearing vibration defect classifier:</span>
               Developed multi-feature fusion time-series AI models using Random Forest, DEA, Wavelet, and FFT for automated quality inspection.
             </li>
-            <li>
-              <span class="timeline-highlight">Corporate RAG knowledge base (PoC):</span> 
+            <li data-i18n-html="experience.job3.b2">
+              <span class="timeline-highlight">Corporate RAG knowledge base (PoC):</span>
               Built an internal AI assistant from scratch with Python, LangChain, and FastAPI. Introduced Chinese-optimized embedding model for local language processing.
             </li>
           </ul>
@@ -205,12 +205,12 @@
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">Jan 2022 — Jun 2022</div>
-          <div class="timeline-role">SOP Standardization &amp; Training</div>
-          <div class="timeline-company">TPI Tung Pei Industrial — Manufacturing &amp; Process Engineer</div>
+          <div class="timeline-date" data-i18n="experience.job4.date">Jan 2022 — Jun 2022</div>
+          <div class="timeline-role" data-i18n="experience.job4.role">SOP Standardization &amp; Training</div>
+          <div class="timeline-company" data-i18n="experience.job4.company">TPI Tung Pei Industrial — Manufacturing &amp; Process Engineer</div>
           <ul class="timeline-items-list">
-            <li>
-              <span class="timeline-highlight">SOP standardization:</span> 
+            <li data-i18n-html="experience.job4.b1">
+              <span class="timeline-highlight">SOP standardization:</span>
               Pioneered plant-wide graphical SOP operation manuals, reducing new staff training time by 67% (3 months → 1 month).
             </li>
           </ul>
@@ -223,15 +223,15 @@
   <section id="projects">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">Projects &amp; Awards</p>
-        <h2 class="section-title">Beyond the day job.</h2>
-        <p class="section-desc">Competitions, research, and side projects that push the boundaries.</p>
+        <p class="section-label" data-i18n="projects.label">Projects &amp; Awards</p>
+        <h2 class="section-title" data-i18n="projects.title">Beyond the day job.</h2>
+        <p class="section-desc" data-i18n="projects.desc">Competitions, research, and side projects that push the boundaries.</p>
       </div>
       <div class="projects-grid">
         <div class="project-card reveal">
-          <span class="project-badge ai">AI Competition</span>
-          <h3>AI CUP 2024 — RAG &amp; LLM in Financial Q&amp;A</h3>
-          <p>Built a hybrid retrieval pipeline (BM25 + FAISS vector search) with custom Word2Vec training, OCR preprocessing, LangChain orchestration, multi-dimensional reranking, and Dockerized deployment for E.SUN's open financial Q&amp;A challenge.</p>
+          <span class="project-badge ai" data-i18n="projects.p1.badge">AI Competition</span>
+          <h3 data-i18n="projects.p1.title">AI CUP 2024 — RAG &amp; LLM in Financial Q&amp;A</h3>
+          <p data-i18n="projects.p1.desc">Built a hybrid retrieval pipeline (BM25 + FAISS vector search) with custom Word2Vec training, OCR preprocessing, LangChain orchestration, multi-dimensional reranking, and Dockerized deployment for E.SUN's open financial Q&amp;A challenge.</p>
           <div class="project-tech">
             <span>RAG</span><span>LangChain</span><span>BM25</span><span>FAISS</span><span>Word2Vec</span><span>OCR</span><span>Docker</span><span>Reranking</span>
           </div>
@@ -241,9 +241,9 @@
         </div>
 
         <div class="project-card reveal">
-          <span class="project-badge ai">Generative AI</span>
-          <h3>MNIST Diffusion Model (DDPM from Scratch)</h3>
-          <p>Implemented Denoising Diffusion Probabilistic Model (DDPM) with a custom lightweight U-Net featuring sinusoidal timestep embeddings and FiLM conditioning. Achieved FID ≈ 7.85 on MNIST generation. Fully containerized with Docker.</p>
+          <span class="project-badge ai" data-i18n="projects.p2.badge">Generative AI</span>
+          <h3 data-i18n="projects.p2.title">MNIST Diffusion Model (DDPM from Scratch)</h3>
+          <p data-i18n="projects.p2.desc">Implemented Denoising Diffusion Probabilistic Model (DDPM) with a custom lightweight U-Net featuring sinusoidal timestep embeddings and FiLM conditioning. Achieved FID ≈ 7.85 on MNIST generation. Fully containerized with Docker.</p>
           <div class="project-tech">
             <span>DDPM</span><span>U-Net</span><span>PyTorch</span><span>Generative AI</span><span>FiLM</span><span>Docker</span>
           </div>
@@ -253,9 +253,9 @@
         </div>
 
         <div class="project-card reveal">
-          <span class="project-badge competition">Research</span>
-          <h3>Brain-to-Text Neural Decoding — Architecture Experiment</h3>
-          <p>Modified a Kaggle competition baseline (NEJM 2024 brain-to-text challenge) by replacing the LSTM decoder with a GRU architecture — including orthogonal weight init for hidden-hidden weights and learnable initial hidden states — and adding self-attention masking for variable-length EEG sequences (512-ch, 20ms bins).</p>
+          <span class="project-badge competition" data-i18n="projects.p3.badge">Research</span>
+          <h3 data-i18n="projects.p3.title">Brain-to-Text Neural Decoding — Architecture Experiment</h3>
+          <p data-i18n="projects.p3.desc">Modified a Kaggle competition baseline (NEJM 2024 brain-to-text challenge) by replacing the LSTM decoder with a GRU architecture — including orthogonal weight init for hidden-hidden weights and learnable initial hidden states — and adding self-attention masking for variable-length EEG sequences (512-ch, 20ms bins).</p>
           <div class="project-tech">
             <span>GRU</span><span>Self-Attention</span><span>EEG</span><span>PyTorch</span><span>Neural Decoding</span><span>RNN</span>
           </div>
@@ -265,9 +265,9 @@
         </div>
 
         <div class="project-card reveal">
-          <span class="project-badge ai">Computer Vision</span>
-          <h3>CDAF Autofocus Algorithm — Focus Metric Study</h3>
-          <p>Implemented and compared three contrast-based autofocus metrics (Std, Sobel, Laplacian variance) with ROI-based scoring on multi-focus images — the same principle behind industrial machine vision cameras used in AOI systems.</p>
+          <span class="project-badge ai" data-i18n="projects.p4.badge">Computer Vision</span>
+          <h3 data-i18n="projects.p4.title">CDAF Autofocus Algorithm — Focus Metric Study</h3>
+          <p data-i18n="projects.p4.desc">Implemented and compared three contrast-based autofocus metrics (Std, Sobel, Laplacian variance) with ROI-based scoring on multi-focus images — the same principle behind industrial machine vision cameras used in AOI systems.</p>
           <div class="project-tech">
             <span>OpenCV</span><span>Laplacian</span><span>Sobel</span><span>ROI</span><span>Python</span><span>Machine Vision</span>
           </div>
@@ -277,45 +277,45 @@
         </div>
 
         <div class="project-card reveal">
-          <span class="project-badge competition">Research</span>
-          <h3>Surface Defect Detection via Photometric Stereo + YOLO</h3>
-          <p>Master's thesis optimizing image recognition algorithms to overcome detection bottlenecks for specific defect categories on bearing surfaces, improving model coverage.</p>
+          <span class="project-badge competition" data-i18n="projects.p5.badge">Research</span>
+          <h3 data-i18n="projects.p5.title">Surface Defect Detection via Photometric Stereo + YOLO</h3>
+          <p data-i18n="projects.p5.desc">Master's thesis optimizing image recognition algorithms to overcome detection bottlenecks for specific defect categories on bearing surfaces, improving model coverage.</p>
           <div class="project-tech">
             <span>YOLO</span><span>Photometric Stereo</span><span>Computer Vision</span><span>Python</span>
           </div>
         </div>
 
         <div class="project-card reveal">
-          <span class="project-badge ai">Edge AI</span>
-          <h3>NVIDIA Jetson Nano — Hand Gesture Classification</h3>
-          <p>Built a real-time hand gesture classification system using ResNet-18 on the Jetson Nano for edge computing applications including hands-free control and accessibility tools.</p>
+          <span class="project-badge ai" data-i18n="projects.p6.badge">Edge AI</span>
+          <h3 data-i18n="projects.p6.title">NVIDIA Jetson Nano — Hand Gesture Classification</h3>
+          <p data-i18n="projects.p6.desc">Built a real-time hand gesture classification system using ResNet-18 on the Jetson Nano for edge computing applications including hands-free control and accessibility tools.</p>
           <div class="project-tech">
             <span>Jetson Nano</span><span>ResNet-18</span><span>Edge AI</span><span>CNN</span>
           </div>
         </div>
 
         <div class="project-card reveal">
-          <span class="project-badge robotics">Robotics</span>
-          <h3>FTC Australia — Top 18 Worldwide</h3>
-          <p>Led the mechanical design for an international robot competition. Responsible for the full product lifecycle from concept to conventional machining, CAD modeling, and 3D printing.</p>
+          <span class="project-badge robotics" data-i18n="projects.p7.badge">Robotics</span>
+          <h3 data-i18n="projects.p7.title">FTC Australia — Top 18 Worldwide</h3>
+          <p data-i18n="projects.p7.desc">Led the mechanical design for an international robot competition. Responsible for the full product lifecycle from concept to conventional machining, CAD modeling, and 3D printing.</p>
           <div class="project-tech">
             <span>Robotics</span><span>CAD</span><span>Conventional Machining</span><span>3D Printing</span>
           </div>
         </div>
 
         <div class="project-card reveal">
-          <span class="project-badge iot">IoT</span>
-          <h3>IoT Smart Home — Bachelor's Thesis (1st Place)</h3>
-          <p>Integrated Raspberry Pi and Node-RED for hardware-software interfacing, implementing servo access control, real-time video streaming, and automated lighting with a remote dashboard.</p>
+          <span class="project-badge iot" data-i18n="projects.p8.badge">IoT</span>
+          <h3 data-i18n="projects.p8.title">IoT Smart Home — Bachelor's Thesis (1st Place)</h3>
+          <p data-i18n="projects.p8.desc">Integrated Raspberry Pi and Node-RED for hardware-software interfacing, implementing servo access control, real-time video streaming, and automated lighting with a remote dashboard.</p>
           <div class="project-tech">
             <span>Raspberry Pi</span><span>Node-RED</span><span>IoT</span><span>Servo Motor</span>
           </div>
         </div>
 
         <div class="project-card reveal">
-          <span class="project-badge competition">Award</span>
-          <h3>Yuan Ze University — Maker Competition</h3>
-          <p>Outstanding Award in the Smart Living group at the 2020 university-wide Maker Competition.</p>
+          <span class="project-badge competition" data-i18n="projects.p9.badge">Award</span>
+          <h3 data-i18n="projects.p9.title">Yuan Ze University — Maker Competition</h3>
+          <p data-i18n="projects.p9.desc">Outstanding Award in the Smart Living group at the 2020 university-wide Maker Competition.</p>
           <div class="project-tech">
             <span>Maker</span><span>Smart Living</span><span>Prototyping</span>
           </div>
@@ -328,29 +328,29 @@
   <section id="volunteer">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">Volunteer</p>
-        <h2 class="section-title">Commitment in action.</h2>
-        <p class="section-desc">Two international volunteer services that strengthened planning, communication, and ownership in unfamiliar environments.</p>
+        <p class="section-label" data-i18n="volunteer.label">Volunteer</p>
+        <h2 class="section-title" data-i18n="volunteer.title">Commitment in action.</h2>
+        <p class="section-desc" data-i18n="volunteer.desc">Two international volunteer services that strengthened planning, communication, and ownership in unfamiliar environments.</p>
       </div>
       <div class="media-grid">
         <div class="photo-card reveal lightbox-trigger" data-src="assets/imgs/volunteer_photo_1.jpg" data-title="Volunteer experience — community program support and cross-cultural collaboration">
           <img src="assets/imgs/volunteer_photo_1.jpg" alt="Volunteer experience photo" loading="lazy">
-          <div class="photo-caption">Volunteer experience — community program support and cross-cultural collaboration.</div>
+          <div class="photo-caption" data-i18n="volunteer.photo_caption">Volunteer experience — community program support and cross-cultural collaboration.</div>
         </div>
         <div class="timeline">
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
-            <div class="timeline-date">Aug 2016 — Sep 2016</div>
-            <div class="timeline-role">International Volunteer Service (x2)</div>
-            <div class="timeline-company">Community programs &amp; cross-cultural collaboration</div>
+            <div class="timeline-date" data-i18n="volunteer.v1.date">Aug 2016 — Sep 2016</div>
+            <div class="timeline-role" data-i18n="volunteer.v1.role">International Volunteer Service (x2)</div>
+            <div class="timeline-company" data-i18n="volunteer.v1.company">Community programs &amp; cross-cultural collaboration</div>
             <ul class="timeline-items-list">
-              <li>
+              <li data-i18n-html="volunteer.v1.b1">
                 Took initiative to join <span class="timeline-highlight">two international volunteer trips</span> during the summer break.
               </li>
-              <li>
+              <li data-i18n-html="volunteer.v1.b2">
                 Coordinated local activities, supported team execution, and communicated stories and messages across diverse participants — building comfort with ambiguity and fast-changing constraints.
               </li>
-              <li>
+              <li data-i18n-html="volunteer.v1.b3">
                 Reinforced an operating style of <span class="timeline-highlight">empathy, commitment, and pragmatic problem-solving</span> — the same traits required for cross-functional factory rollouts.
               </li>
             </ul>
@@ -364,26 +364,26 @@
   <section id="education">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">Education</p>
-        <h2 class="section-title">From gears to GPUs.</h2>
-        <p class="section-desc">A dual foundation in mechanical engineering and computer science.</p>
+        <p class="section-label" data-i18n="education.label">Education</p>
+        <h2 class="section-title" data-i18n="education.title">From gears to GPUs.</h2>
+        <p class="section-desc" data-i18n="education.desc">A dual foundation in mechanical engineering and computer science.</p>
       </div>
       <div class="edu-grid">
         <div class="edu-card reveal">
-          <div class="edu-degree">Master's Degree</div>
-          <h3>Computer Science &amp; Information Engineering</h3>
-          <div class="edu-school">Yuan Ze University</div>
-          <div class="edu-date">Sep 2024 — Jan 2026</div>
-          <div class="edu-thesis">
+          <div class="edu-degree" data-i18n="education.e1.degree">Master's Degree</div>
+          <h3 data-i18n="education.e1.field">Computer Science &amp; Information Engineering</h3>
+          <div class="edu-school" data-i18n="education.e1.school">Yuan Ze University</div>
+          <div class="edu-date" data-i18n="education.e1.date">Sep 2024 — Jan 2026</div>
+          <div class="edu-thesis" data-i18n-html="education.e1.thesis">
             <strong>Thesis:</strong> Surface Defect Detection of Bearings Based on Photometric Stereo Combined with YOLO — optimizing image recognition to overcome detection bottlenecks for specific defect categories.
           </div>
         </div>
         <div class="edu-card reveal">
-          <div class="edu-degree">Bachelor's Degree</div>
-          <h3>Mechanical Engineering</h3>
-          <div class="edu-school">Yuan Ze University</div>
-          <div class="edu-date">Sep 2017 — Jun 2021</div>
-          <div class="edu-thesis">
+          <div class="edu-degree" data-i18n="education.e2.degree">Bachelor's Degree</div>
+          <h3 data-i18n="education.e2.field">Mechanical Engineering</h3>
+          <div class="edu-school" data-i18n="education.e2.school">Yuan Ze University</div>
+          <div class="edu-date" data-i18n="education.e2.date">Sep 2017 — Jun 2021</div>
+          <div class="edu-thesis" data-i18n-html="education.e2.thesis">
             <strong>Thesis:</strong> IoT Smart Home — integrated Raspberry Pi and Node-RED for hardware-software interfacing, implementing servo motor access control and real-time video streaming. Won 1st Place.
           </div>
         </div>
@@ -395,34 +395,34 @@
   <section id="certifications">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">Certifications</p>
-        <h2 class="section-title">Validated expertise.</h2>
-        <p class="section-desc">Professional qualifications and practice certifications. For the full certificate wall, see <a href="certs.html" style="color: var(--accent); text-decoration: none;" data-track-id="link_all_certificates_inline">all certificates</a>.</p>
+        <p class="section-label" data-i18n="certifications.label">Certifications</p>
+        <h2 class="section-title" data-i18n="certifications.title">Validated expertise.</h2>
+        <p class="section-desc" data-i18n-html="certifications.desc">Professional qualifications and practice certifications. For the full certificate wall, see <a href="certs.html" style="color: var(--accent); text-decoration: none;" data-track-id="link_all_certificates_inline">all certificates</a>.</p>
       </div>
       <div class="cert-grid">
         <div class="cert-card reveal">
           <div class="cert-icon">🏅</div>
-          <h4>Certified Quality Technician (CQT)</h4>
-          <p>Professional quality certification</p>
+          <h4 data-i18n="certifications.c1_title">Certified Quality Technician (CQT)</h4>
+          <p data-i18n="certifications.c1_desc">Professional quality certification</p>
         </div>
         <div class="cert-card reveal">
           <div class="cert-icon">📊</div>
-          <h4>Six Sigma Green Belt</h4>
-          <p>Process improvement methodology</p>
+          <h4 data-i18n="certifications.c2_title">Six Sigma Green Belt</h4>
+          <p data-i18n="certifications.c2_desc">Process improvement methodology</p>
         </div>
         <div class="cert-card reveal">
           <div class="cert-icon">🤖</div>
-          <h4>NVIDIA DLI — Deep Learning Fundamentals</h4>
-          <p>CNN, Transfer Learning, PyTorch/TensorFlow</p>
+          <h4 data-i18n="certifications.c3_title">NVIDIA DLI — Deep Learning Fundamentals</h4>
+          <p data-i18n="certifications.c3_desc">CNN, Transfer Learning, PyTorch/TensorFlow</p>
         </div>
         <div class="cert-card reveal">
           <div class="cert-icon">⚡</div>
-          <h4>NVIDIA DLI — Jetson Nano Edge AI</h4>
-          <p>Edge computing &amp; AI applications</p>
+          <h4 data-i18n="certifications.c4_title">NVIDIA DLI — Jetson Nano Edge AI</h4>
+          <p data-i18n="certifications.c4_desc">Edge computing &amp; AI applications</p>
         </div>
       </div>
       <div class="reveal" style="margin-top: 1.75rem;">
-        <a href="certs.html" class="btn btn-secondary" data-track-id="cta_view_all_certificates">View all certificates</a>
+        <a href="certs.html" class="btn btn-secondary" data-track-id="cta_view_all_certificates" data-i18n="certifications.cta">View all certificates</a>
       </div>
     </div>
   </section>
@@ -431,9 +431,9 @@
   <section id="contact">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">Contact</p>
-        <h2 class="section-title">Let's build<br>something that ships.</h2>
-        <p class="section-desc">Open to AI Engineer, Data Scientist, and ML Engineer roles — especially where IT meets OT. If you're building industrial AI, smart manufacturing systems, or data-driven production tools, I bring both the engineering chops and the factory-floor context to make it real.</p>
+        <p class="section-label" data-i18n="contact.label">Contact</p>
+        <h2 class="section-title" data-i18n-html="contact.title">Let's build<br>something that ships.</h2>
+        <p class="section-desc" data-i18n="contact.desc">Open to AI Engineer, Data Scientist, and ML Engineer roles — especially where IT meets OT. If you're building industrial AI, smart manufacturing systems, or data-driven production tools, I bring both the engineering chops and the factory-floor context to make it real.</p>
       </div>
       <div class="contact-links reveal">
         <a href="mailto:mic055179hael@gmail.com" class="contact-link" data-track-id="contact_email">
@@ -468,9 +468,10 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@4/dist/fp.min.js"></script>
-  <script src="js/supabase-client.js?v=20260416"></script>
-  <script src="js/tracking.js?v=20260416"></script>
-  <script src="js/script.js?v=20260416"></script>
-  <script src="js/components.js?v=20260416"></script>
+  <script src="js/supabase-client.js?v=20260501"></script>
+  <script src="js/tracking.js?v=20260501"></script>
+  <script src="js/i18n.js?v=20260501"></script>
+  <script src="js/script.js?v=20260501"></script>
+  <script src="js/components.js?v=20260501"></script>
 </body>
 </html>

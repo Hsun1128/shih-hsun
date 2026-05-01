@@ -203,10 +203,62 @@ footer p {
   display: block;
 }
 
+/* ===== LANGUAGE SWITCHER ===== */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-left: 1.25rem;
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  font-family: var(--font);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.lang-btn:hover { color: var(--text-primary); }
+
+.lang-btn.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.lang-divider {
+  color: var(--border);
+  font-size: 0.75rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mobile-lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-lang-switcher .lang-btn {
+  font-size: 1rem;
+  padding: 0.3rem 0.6rem;
+}
+
 /* ===== RESPONSIVE (nav, layout, footer only) ===== */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-hamburger { display: block; }
+  .lang-switcher { display: none; }
   section { padding: 5rem 1.5rem; }
 }
 
