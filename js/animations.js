@@ -110,12 +110,27 @@
     ScrollTrigger.refresh();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  // Defer init until fonts/images have settled so ScrollTrigger measures the
+  // correct positions. Otherwise below-fold `once:true` triggers can fire while
+  // the page is still short (pre-webfont), playing — and killing — themselves
+  // before the visitor ever scrolls to them.
+  var started = false;
+  function start() {
+    if (started) return;
+    started = true;
     init();
   }
 
-  // Layout can shift after webfonts and lazy images load — refresh then too.
-  window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(start);
+  } else {
+    window.addEventListener('load', start);
+  }
+  // Hard fallback so animations always initialize even if fonts.ready stalls.
+  setTimeout(start, 3000);
+
+  // Keep positions accurate across late layout shifts.
+  window.addEventListener('load', function () {
+    if (started) ScrollTrigger.refresh();
+  });
 })();
