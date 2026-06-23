@@ -76,6 +76,11 @@
       var decimals = (m[2].split('.')[1] || '').length;
       var counter = { v: 0 };
 
+      // Show the gauge resting at zero until it is scrolled into view, so the
+      // count-up is actually perceptible (the raw value reads the same before
+      // and after, so without this the animation would be invisible).
+      el.textContent = prefix + (0).toFixed(decimals) + suffix;
+
       gsap.to(counter, {
         v: target,
         duration: 2.0,
