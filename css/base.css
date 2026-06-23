@@ -81,6 +81,14 @@ body::before {
   transform: translateY(0);
 }
 
+/* When GSAP is active it owns reveal motion; neutralize the hidden default so a
+   missed trigger can never leave an element stuck invisible. */
+.gsap-ready .reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
 }
