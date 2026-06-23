@@ -1,4 +1,7 @@
-@import url('base.css');
-@import url('layout.css');
-@import url('components.css');
-@import url('sections.css');
+/* Imports are versioned so cache-busting on style.css propagates to each sheet.
+   Bump the ?v= date on every line together with the <link> tags in the HTML
+   whenever any of these files change. */
+@import url('base.css?v=20260704');
+@import url('layout.css?v=20260704');
+@import url('components.css?v=20260704');
+@import url('sections.css?v=20260704');
