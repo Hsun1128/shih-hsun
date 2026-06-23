@@ -2,18 +2,18 @@
 
 // ── Chart.js global theme ────────────────────────────────────────────────
 const COLORS = {
-  blue:   '#2997ff',
-  green:  '#30d158',
-  purple: '#bf5af2',
-  orange: '#ff9f0a',
-  muted:  '#6e6e73',
-  border: 'rgba(255,255,255,0.08)',
-  cardBg: '#1d1d1f',
+  blue:   '#ffb224',  /* primary → signal amber */
+  green:  '#4cc38a',
+  purple: '#8a93ff',
+  orange: '#ff8f3a',
+  muted:  '#636e7b',
+  border: 'rgba(150,168,184,0.16)',
+  cardBg: '#14181e',
 };
 
-Chart.defaults.color       = '#a1a1a6';
-Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, sans-serif";
-Chart.defaults.font.size   = 12;
+Chart.defaults.color       = '#9aa6b2';
+Chart.defaults.font.family = "'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace";
+Chart.defaults.font.size   = 11;
 
 function gridOpts() {
   return { color: COLORS.border, drawBorder: false };
@@ -124,7 +124,7 @@ function renderDailyVisits(data) {
 
   const isCumulative = currentView === 'cumulative';
   const color = isCumulative ? COLORS.green : COLORS.blue;
-  const bg    = isCumulative ? 'rgba(48,209,88,0.08)' : 'rgba(41,151,255,0.08)';
+  const bg    = isCumulative ? 'rgba(76,195,138,0.10)' : 'rgba(255,178,36,0.10)';
 
   const canvas = document.getElementById('chart-daily-visits');
   if (visitorChart) { visitorChart.destroy(); visitorChart = null; }

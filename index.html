@@ -15,28 +15,46 @@
   <meta name="twitter:description" content="AI & data science engineer bridging IT and OT — building intelligent systems for the factory floor.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260625">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260626">
 </head>
 <body>
 
   <div id="header-placeholder" data-file="components/header-main.html"></div>
 
-  <!-- HERO -->
+  <!-- HERO — AOI inspection viewport -->
   <section id="hero" class="hero">
-    <p class="hero-overline">AI &amp; Manufacturing Engineer</p>
-    <h1>Shih Hsun <span class="gradient-text">Wang</span></h1>
-    <p class="hero-subtitle">
-      AI &amp; data science engineer with deep OT roots — building intelligent systems that actually work on the factory floor.
-      Where most engineers choose one side, I bring both: software fluency and real-world manufacturing context.
-    </p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary" data-track-id="cta_get_in_touch">Get in Touch</a>
-      <a href="#experience" class="btn btn-secondary" data-track-id="cta_view_work">View My Work</a>
-      <a href="assets/CV_sm_en_20260326.pdf" class="btn btn-secondary" target="_blank" rel="noopener" data-track-id="cta_download_cv_en">Download CV (EN)</a>
-      <a href="assets/CV_sm_zh_20260326.pdf" class="btn btn-secondary" target="_blank" rel="noopener" data-track-id="cta_download_cv_zh">Download CV (ZH)</a>
+    <div class="inspect" aria-hidden="true">
+      <span class="reg tl"></span><span class="reg tr"></span>
+      <span class="reg bl"></span><span class="reg br"></span>
+      <span class="crosshair-h"></span><span class="crosshair-v"></span>
+      <span class="scan"></span>
+      <span class="tag tl">ROI · IT × OT</span>
+      <span class="tag tr">Pass</span>
     </div>
-    <div class="hero-scroll"><span></span></div>
+
+    <div class="hero-body">
+      <p class="hero-overline"><span class="live-dot"></span>AI &amp; Manufacturing Engineer</p>
+      <h1>Shih Hsun <span class="gradient-text">Wang</span></h1>
+      <p class="hero-subtitle">
+        AI &amp; data science engineer with deep OT roots — building intelligent systems that actually work on the factory floor.
+        Where most engineers choose one side, I bring both: software fluency and real-world manufacturing context.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary" data-track-id="cta_get_in_touch">Get in Touch</a>
+        <a href="#experience" class="btn btn-secondary" data-track-id="cta_view_work">View My Work</a>
+        <a href="assets/CV_sm_en_20260326.pdf" class="btn btn-secondary" target="_blank" rel="noopener" data-track-id="cta_download_cv_en">Download CV (EN)</a>
+        <a href="assets/CV_sm_zh_20260326.pdf" class="btn btn-secondary" target="_blank" rel="noopener" data-track-id="cta_download_cv_zh">Download CV (ZH)</a>
+      </div>
+      <ul class="hero-readout">
+        <li><span class="ro-val">4+</span><span class="ro-unit">yrs OT</span></li>
+        <li><span class="ro-val">−25%</span><span class="ro-unit">manpower</span></li>
+        <li><span class="ro-val">NT$2.2M</span><span class="ro-unit">saved / yr</span></li>
+        <li><span class="ro-val">−67%</span><span class="ro-unit">ramp time</span></li>
+      </ul>
+    </div>
+
+    <div class="hero-scroll">Scroll<span></span></div>
   </section>
 
   <!-- ABOUT -->
@@ -468,9 +486,9 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@4/dist/fp.min.js"></script>
-  <script src="js/supabase-client.js?v=20260625"></script>
-  <script src="js/tracking.js?v=20260625"></script>
-  <script src="js/script.js?v=20260625"></script>
-  <script src="js/components.js?v=20260625"></script>
+  <script src="js/supabase-client.js?v=20260626"></script>
+  <script src="js/tracking.js?v=20260626"></script>
+  <script src="js/script.js?v=20260626"></script>
+  <script src="js/components.js?v=20260626"></script>
 </body>
 </html>
