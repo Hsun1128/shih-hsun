@@ -66,31 +66,38 @@
     document.querySelectorAll('.contact-links').forEach(reveal);
 
     // ── 3. Calibration count-up on the About metrics (instrument readout) ────
+    // Driven by IntersectionObserver (not ScrollTrigger) so a jump-scroll can
+    // never skip it straight to the end value.
+    var canObserve = 'IntersectionObserver' in window;
     document.querySelectorAll('.stat-number').forEach(function (el) {
       var raw = el.textContent.trim();
       var m = raw.match(/^([^\d-]*)(-?\d+(?:\.\d+)?)(.*)$/);
-      if (!m) return;
+      if (!m || !canObserve) return;
       var prefix = m[1];
       var target = parseFloat(m[2]);
       var suffix = m[3];
       var decimals = (m[2].split('.')[1] || '').length;
       var counter = { v: 0 };
 
-      // Show the gauge resting at zero until it is scrolled into view, so the
-      // count-up is actually perceptible (the raw value reads the same before
-      // and after, so without this the animation would be invisible).
+      // Rest the gauge at zero until in view, so the count-up is perceptible.
       el.textContent = prefix + (0).toFixed(decimals) + suffix;
 
-      gsap.to(counter, {
-        v: target,
-        duration: 2.0,
-        ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 72%', once: true },
-        onUpdate: function () {
-          el.textContent = prefix + counter.v.toFixed(decimals) + suffix;
-        },
-        onComplete: function () { el.textContent = raw; }
-      });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          io.disconnect();
+          gsap.to(counter, {
+            v: target,
+            duration: 1.8,
+            ease: 'power2.out',
+            onUpdate: function () {
+              el.textContent = prefix + counter.v.toFixed(decimals) + suffix;
+            },
+            onComplete: function () { el.textContent = raw; }
+          });
+        });
+      }, { threshold: 0.45 });
+      io.observe(el);
     });
 
     // ── 4. Hero parallax — content drifts up & fades as you scroll past ──────
