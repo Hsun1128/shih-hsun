@@ -15,33 +15,57 @@
   if (!window.gsap || !window.ScrollTrigger || prefersReduced) return;
 
   var gsap = window.gsap;
-  gsap.registerPlugin(window.ScrollTrigger);
+  var ScrollTrigger = window.ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
 
   // Tell CSS that GSAP owns reveals now: neutralize the hidden-by-default state
   // so that if any trigger never fires, the element stays visible (never stuck).
   document.documentElement.classList.add('gsap-ready');
 
-  function init() {
-    // ── 1. Staggered, scroll-triggered reveals (replaces the flat fade) ──────
-    // gsap.from() means: only hidden while the entrance tween runs. Any element
-    // a trigger misses simply remains in its natural (visible) state.
-    if (window.ScrollTrigger.batch) {
-      window.ScrollTrigger.batch('.reveal', {
-        start: 'top 88%',
-        onEnter: function (batch) {
-          gsap.from(batch, {
-            opacity: 0,
-            y: 32,
-            duration: 0.7,
-            ease: 'power3.out',
-            stagger: 0.09,
-            overwrite: true
-          });
-        }
-      });
-    }
+  function reveal(el) {
+    gsap.from(el, {
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 86%', once: true }
+    });
+  }
 
-    // ── 2. Calibration count-up on the About metrics (instrument readout) ────
+  function staggerChildren(containerSel, childSel) {
+    document.querySelectorAll(containerSel).forEach(function (container) {
+      var items = container.querySelectorAll(childSel);
+      if (!items.length) return;
+      gsap.from(items, {
+        opacity: 0,
+        y: 38,
+        duration: 0.6,
+        ease: 'power3.out',
+        stagger: 0.12,
+        scrollTrigger: { trigger: container, start: 'top 82%', once: true }
+      });
+    });
+  }
+
+  function init() {
+    // ── 1. Section heading blocks fade up ───────────────────────────────────
+    gsap.utils.toArray('.reveal').forEach(function (el) {
+      if (el.querySelector('.section-title')) reveal(el);
+    });
+
+    // ── 2. Card grids reveal with a clear stagger (the "non-rigid" feel) ─────
+    staggerChildren('.about-stats', '.stat-card');
+    staggerChildren('.skills-grid', '.skill-card');
+    staggerChildren('.projects-grid', '.project-card');
+    staggerChildren('.edu-grid', '.edu-card');
+    staggerChildren('.cert-grid', '.cert-card');
+    staggerChildren('.media-grid', '.photo-card');
+    staggerChildren('.timeline', '.timeline-item');
+
+    // Stray reveals not covered above (CTA rows) — keep them lively too.
+    document.querySelectorAll('.contact-links').forEach(reveal);
+
+    // ── 3. Calibration count-up on the About metrics (instrument readout) ────
     document.querySelectorAll('.stat-number').forEach(function (el) {
       var raw = el.textContent.trim();
       var m = raw.match(/^([^\d-]*)(-?\d+(?:\.\d+)?)(.*)$/);
@@ -54,9 +78,9 @@
 
       gsap.to(counter, {
         v: target,
-        duration: 1.4,
+        duration: 1.6,
         ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+        scrollTrigger: { trigger: el, start: 'top 80%', once: true },
         onUpdate: function () {
           el.textContent = prefix + counter.v.toFixed(decimals) + suffix;
         },
@@ -64,39 +88,26 @@
       });
     });
 
-    // ── 3. Hero parallax — content drifts up & fades as you scroll past ──────
+    // ── 4. Hero parallax — content drifts up & fades as you scroll past ──────
     var heroBody = document.querySelector('.hero-body');
     if (heroBody) {
       gsap.to(heroBody, {
         y: -48,
         opacity: 0.35,
         ease: 'none',
-        scrollTrigger: {
-          trigger: '#hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.4
-        }
+        scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 0.4 }
       });
     }
-
-    // Background gains a subtle depth offset for a non-flat, layered feel.
     var hero = document.querySelector('#hero');
     if (hero) {
       gsap.to(hero, {
         backgroundPositionY: '24%',
         ease: 'none',
-        scrollTrigger: {
-          trigger: '#hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.4
-        }
+        scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 0.4 }
       });
     }
 
-    // Re-measure once fonts/images settle to keep trigger positions accurate.
-    window.ScrollTrigger.refresh();
+    ScrollTrigger.refresh();
   }
 
   if (document.readyState === 'loading') {
@@ -106,5 +117,5 @@
   }
 
   // Layout can shift after webfonts and lazy images load — refresh then too.
-  window.addEventListener('load', function () { window.ScrollTrigger.refresh(); });
+  window.addEventListener('load', function () { ScrollTrigger.refresh(); });
 })();
