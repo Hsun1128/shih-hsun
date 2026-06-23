@@ -38,11 +38,11 @@
       if (!items.length) return;
       gsap.from(items, {
         opacity: 0,
-        y: 38,
-        duration: 0.6,
+        y: 46,
+        duration: 0.7,
         ease: 'power3.out',
-        stagger: 0.12,
-        scrollTrigger: { trigger: container, start: 'top 82%', once: true }
+        stagger: 0.18,
+        scrollTrigger: { trigger: container, start: 'top 84%', once: true }
       });
     });
   }
@@ -78,9 +78,9 @@
 
       gsap.to(counter, {
         v: target,
-        duration: 1.6,
+        duration: 2.0,
         ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 80%', once: true },
+        scrollTrigger: { trigger: el, start: 'top 72%', once: true },
         onUpdate: function () {
           el.textContent = prefix + counter.v.toFixed(decimals) + suffix;
         },
@@ -92,8 +92,8 @@
     var heroBody = document.querySelector('.hero-body');
     if (heroBody) {
       gsap.to(heroBody, {
-        y: -48,
-        opacity: 0.35,
+        y: -120,
+        opacity: 0.2,
         ease: 'none',
         scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 0.4 }
       });
